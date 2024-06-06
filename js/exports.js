@@ -13,7 +13,7 @@ export async function getProduto(id) {
     const link =`${url}/${versao}/laika/produto/${id}`
     const response=await fetch(link)
     const data= await response.json()
-    return data.Produto[0]
+    return data.dados
 }
 /*export async function getProdutoFiltro(filtro) {
     const link =`http://localhost:8080/V2/ACMEProdutos/Produtos/filtro?nome=${filtro}`
@@ -281,5 +281,12 @@ export async function getRaca(id) {
     console.log(link);
     console.log(response);
     console.log(data);
+    return data.dados
+}
+
+export async function getCategorias() {
+    const link = `${url}/${versao}/laika/categorias`
+    const response=await fetch(link)
+    const data=await response.json()
     return data.dados
 }

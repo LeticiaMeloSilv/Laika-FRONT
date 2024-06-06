@@ -1,25 +1,26 @@
-import { getProdutos, getProduto} from './exports.js'
+import { getProdutos, getProduto,  getCategorias} from './exports.js'
 
 const containerProdutos=document.getElementById('containerProdutos')
 
+const listaCategorias = await getCategorias()
 
+listaCategorias.forEach(categoria => {
+    const nome = document.createElement('p')
+    nome.value = categoria.id
+    nome.textContent=categoria.nome
+    nome.classList.add('cursor-pointer')
+    nome.addEventListener('click',()=>{
+        containerProdutos.innerHTML = ''
+
+        alert(categoria.id)
+    })
+    document.getElementById('navCategorias').appendChild(nome)
+});
 function criarCard(produto) {
 
     const card = document.createElement('div')
-    card.classList.add('max-w-[229px]','rounded-xl','bg-white','p-4','text-black')
-    const id = produto.id
+    card.classList.add('max-w-[229px]','rounded-xl','bg-white','p-4','text-black','flex','flex-col','justify-between')
     //card.addEventListener('click', () => abrirproduto(id));
-    
-    const divAvaliacao = document.createElement('div')
-    divAvaliacao.classList.add('flex','items-center')
-
-    const avaliacao = document.createElement('h2')
-    avaliacao.textContent = '4,5'
-    avaliacao.classList.add('text-xl','font-extrabold')
-        
-    const imagemEstrela = document.createElement('img')
-    imagemEstrela.src = './img/estrela.png'
-    imagemEstrela.classList.add('w-[23px]')
 
     const imagemProduto = document.createElement('img')
     imagemProduto.src = produto.img
@@ -35,26 +36,30 @@ function criarCard(produto) {
     preco.textContent = `R$ ${produto.preco}`
     
     const btn_comprar=document.createElement('button')
-    btn_comprar.textContent='Adicionar'
+    btn_comprar.textContent='Comprar'
     btn_comprar.classList.add('mt-5','w-auto','bg-slate-300','border','border-solid','border-violet-950','rounded-xl','py-2.5','px-11','text-violet-950')
 
-    divAvaliacao.replaceChildren(avaliacao,imagemEstrela)
-    card.replaceChildren(divAvaliacao, imagemProduto,nomeProduto,preco,btn_comprar)
+    const contentBottom = document.createElement('div')
+    contentBottom.replaceChildren(nomeProduto,preco,btn_comprar)
+    card.replaceChildren(imagemProduto,contentBottom)
     containerProdutos.appendChild(card)
-    console.log(produto);
 
-    return containerProdutos
+    card.addEventListener('click',()=>{
+        window.location.href='./telaCompra.html?id='+produto.id
+    })
 }
 
 
-
-async function preencherContainer() {
-    const container = document.querySelector('main')
-    const produtos = await getProdutos()
+let search = {
+    categoria:1
+}
+async function preencherContainer(search) {
+    
+    const produtos = await getProdutos(search)
     produtos.forEach(produto => {
-        const main = criarCard(produto)
-        container.appendChild(containerProdutos)
-    });
+        criarCard(produto)
+    })
 }
 
-preencherContainer()
+preencherContainer(search)
+

@@ -11,62 +11,33 @@
 
 <body class="flex flex-col bg-[#FFDD95]">
   <header class="flex justify-evenly itens-center pt-5 pb-5 gap-5 w-full bg-[#FFDD95] fixed">
-    <div class="flex gap-5 max-flex-col max-gap-0">
-      <img src="../img/logo.png" alt="Logo Laika" class="max-w-full w-[100px] max-mt-5" />
-      <input type="text"
-        class="flex gap-5 self-stretch px-5 py-4 my-auto w-full text-xl bg-[#FFDD95] border-[#2A00A8] border-solid border-[5px] rounded-[32px] text-zinc-700 text-opacity-80 max-mt-8"
+    <div class="flex w-full px-48 gap-5 max-flex-col itens-center flex max-gap-0">
+      <img src="../img/logo.png" alt="Logo Laika" class="max-w-full w-[100px] max-mt-5 " />
+      <div class=" mt-3 flex items-center h-20 bg-[#FFDD95] border-[#2A00A8] border-solid border-[5px] rounded-[32px] w-full">
+       <input type="text"
+        class="flex w-full gap-5 self-stretch px-5 py-4 my-auto h-full w-full text-xl  text-zinc-700 text-opacity-80 max-mt-8 bg-[#FFDD95] rounded-[32px]"
         placeholder="O que seu pet precisa?">
-      <img src="../img/search.png" alt="Botao Pesquisar" />
+         <img class="h-2/3 " src="../img/search.png" alt="Botao Pesquisar" />
+        </div>
     </div>
     <nav
       class="flex gap-5 self-stretch my-auto text-xl font-semibold text-center max-flex-wrap max-mt-10 max-max-w-full">
-      <a href="#">Compras Frequentes</a>
-      <a href="../html/pedidos.html">Meus pedidos</a>
-      <img src="../img/shopping_cart.png" alt="Carrinho de compras" class="self-start mt-3 aspect-[0.97] w-[37px]" />
-      <a href="../html/pedidos.html"><img src="../img/usuario.png" alt="Perfil Usuario" class="w-20  fill-violet-900" /></a>
+      <a href="../html/pedidos.html">
+      <img src="../img/usuario.png" alt="Perfil Usuario" class="h-20 fill-violet-900 pr-24" /></a>
     </nav>
   </header>
   <main class="mt-40 max-max-w-full">
-    <div class="flex gap-5 max-flex-col max-gap-0">
+    <div class="flex pt-10 gap-5 max-gap-0 items-center flex-col">
       <nav
-        class="fixed h-full flex flex-col grow w-[16%] p-5 text-xl font-semibold text-center gap-4 whitespace-nowrap bg-slate-300 rounded-[30px] text-slate-700 max-pl-5 max-mt-5">
-        <p class="text-violet-950 font-extrabold">Categorias</p>
-        <a href="#">Ração</a>
-        <a href="#">Brinquedos</a>
-        <a href="#">Medicamentos</a>
-        <a href="#">Higiene</a>
-        <a href="#">Limpeza</a>
-        <a href="#">Acessórios</a>
+        class="h-full flex flex-row grow w-[90%] justify-evenly p-5 text-xl font-semibold text-center gap-4 whitespace-nowrap bg-slate-300 rounded-[30px] text-slate-700 max-pl-5 max-mt-5"
+        id="navCategorias"
+        >
       </nav>
-      <div class="flex flex-col w-[84%] ml-[16%] p-10 items-center justify-center max-w-full flex-warp">
-        <h2 class="text-xl font-semibold text-center mb-5 text-violet-950 max-mt-10 max-max-w-full">
-          Ração para cachorro
-        </h2>
-        <div class="flex flex-wrap gap-5 max-flex-col max-gap-0" id="containerProdutos">
-
-          <div class="max-w-[229px] rounded-xl bg-white p-4 text-black">
-            <div class="flex items-center">
-              <h2 class="text-xl font-extrabold">4,5</h2>
-              <img src="../img/estrela.png" class="w-[23px]" alt="Rating star" />
-            </div>
-            <img src="../img/produto.png" class="w-[125px] flex justify-center items-center self-center mt-2.5"
-              alt="Foto Produto" />
-
-            <p class="mt-4  font-bold">
-              Ração para sabiá 5kg - Nativos
-            </p>
-            <p class="mt-3 text-violet-950">R$145,99</p>
-            <button id="btn_adicionar"
-              class="mt-5 w-auto bg-slate-300 border border-solid border-violet-950 rounded-xl py-2.5 px-11 text-violet-950">
-              Adicionar
-            </button>
-          </div>
-
-        </div>
-      </div>
+      <div class="flex flex-col px-10 items-center justify-center max-w-full flex-warp"></div>
     </div>
+    <div class="flex flex-wrap gap-5 max-flex-col max-gap-0 p-28" id="containerProdutos"></div>
   </main>
-
 </body>
-
 </html>
+
+
