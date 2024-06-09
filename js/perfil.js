@@ -31,7 +31,7 @@ cidade.value=perfilAntigo.endereco.cidade
 const estado = document.getElementById('estado')
 estado.value=perfilAntigo.endereco.estado
 const numero = document.getElementById('numeroDaCasa')
-numero.value=perfilAntigo.endereco.complemento
+numero.value=perfilAntigo.endereco.numero
 // const fotoPerfil = document.getElementById('fotoPerfil')
 // fotoPerfil.value = perfilAntigo.img
 // preencherCampos()
@@ -126,7 +126,7 @@ function editarPerfil(){
         bairro:bairroAtualizado,
         cidade:cidadeAtualizado,
         estado:estadoAtualizado,
-        complemento:numeroAtualizado,
+        numero:numeroAtualizado,
 
       }
     }

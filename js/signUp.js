@@ -1,11 +1,12 @@
 'use strict'
-import { getCliente, getClientes, deleteCliente, putCliente, getAnimal, deleteAnimal, getAnimais, postAnimal, putAnimal, getTipos, getRaca ,getPortes,getAllAnimals,getAllServicos,animalDataById,postarNovoCliente} from './exports.js'
+import { getCliente, getClientes, deleteCliente, putCliente,postCliente, getAnimal, deleteAnimal, getAnimais, postAnimal, putAnimal, getTipos, getRaca ,getPortes,getAllAnimals,getAllServicos,animalDataById} from './exports.js'
 
-const criarConta1 = document.getElementById('criarConta1')
+const btn_criarConta = document.getElementById('btn_criarConta')
 const telaInfo1 = document.getElementById('telaInfo1')
 const criarConta2 = document.getElementById('criarConta2')
 const telaInfo2 = document.getElementById('telaInfo2')
 
+btn_criarConta.addEventListener('click',getInfo1)
 function getInfo1(){
 
     console.log('iiii');
@@ -67,7 +68,7 @@ function getInfo1(){
         telaInfo1.classList.add('hidden')
         telaInfo2.classList.remove('hidden')
 
-        criarConta2.addEventListener('click', function(){
+        criarConta2.addEventListener('click', async function(){
 
             const rua = document.getElementById('rua').value
             const cidade = document.getElementById('cidade').value
@@ -110,19 +111,25 @@ function getInfo1(){
                     telefone: telefone,
                     email: email,
                     senha: senha,
-                    img: null,
+                    img: '../img/perfilSemFoto.jpg',
                     endereco: {
                         rua: rua,
                         bairro: bairro,
                         cidade: cidade,
-                        estado: estado,
-                        complemento: ""
+                        estado: estado
+                        // complemento: ""
                     }
                 }
 
                 console.log(novoClienteJSON);
 
-                postarNovoCliente(novoClienteJSON)
+                const retornoApi= await postCliente(novoClienteJSON)
+            if (retornoApi) {
+                alert('Conta criada com sucesso')
+                window.location.href='./login.html'
+            } else {
+                alert('Não foi possivel criar conta, verifique as informações')
+            }
             }
 
         })

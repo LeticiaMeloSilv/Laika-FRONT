@@ -24,7 +24,7 @@
         </div>
         <hr class="self-stretch mt-4 w-full bg-black border border-black border-solid">
         <nav class="flex gap-5 px-5 mt-3.5 text-2xl text-violet-900 w-[695px] ">
-            <a href="#" class="flex-auto">Agendar serviços</a>
+            <a href="./agendamento_servicos.html" class="flex-auto">Agendar serviços</a>
             <a href="#" class="flex-auto">Veterinário</a>
             <a href="#" class="flex-auto">Produtos</a>
         </nav>
@@ -68,7 +68,18 @@
                     <div class="bg-white p-5 rounded-lg text-black text-center">
                         <h4 class="text-2xl font-bold mb-4">Detalhes do Agendamento</h4>
                         <p id="agendamento_servico" class="text-xl"></p> 
-                            <p id="agendamento_pet" class="text-xl"></p> <button id="close-button"
+                            <p id="agendamento_pet" class="text-xl"></p> 
+                            <div class="flex gap-5 items-center justify-center w-[100%]">
+                            <button id="btn_editar"
+                            class="mt-5 px-4 py-2 bg-indigo-500 text-white rounded-lg">Editar</button>
+                            <div class="hidden mt-2" id="divAtualizar">
+                                <p>Nova Data</p>
+                            <input type="date" class="px-4 py-2 bg-indigo-500 text-white rounded-lg" id="inputAtualizarData">
+                            </div>
+                            <button id="btn_excluir"
+                            class="mt-5 px-4 py-2 bg-red-800 text-white rounded-lg">Excluir</button
+                            ></div>
+                            <button id="close-button"
                             class="mt-5 px-4 py-2 bg-red-500 text-white rounded-lg">Fechar</button>
                     </div>
                 </div>

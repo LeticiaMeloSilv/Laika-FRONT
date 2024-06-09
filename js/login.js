@@ -1,5 +1,8 @@
 'use strict'
 
+import { getCliente, getClientes, deleteCliente, putCliente,postCliente, getAnimal, deleteAnimal, getAnimais, postAnimal, putAnimal, getTipos, getRaca ,getPortes,getFuncionarios} from './exports.js'
+
+
 const btnLogar = document.getElementById('logar')
 const errormessage = document.getElementById('errorMessage')
 const olho = document.getElementById('olho')
@@ -28,8 +31,8 @@ btnLogar.addEventListener('click', async function(){
     console.log(senha);
     
 
-    const allClients = await getAllClients()
-    const allFuncionarios = await getAllFuncionarios()
+    const allClients = await getClientes()
+    const allFuncionarios = await getFuncionarios()
 
     console.log(allClients);
 
@@ -66,18 +69,3 @@ btnLogar.addEventListener('click', async function(){
     });
 })
 
-async function getAllClients() {
-
-    const endpoint = 'https://laika-back.onrender.com/v1/laika/clientes';
-    const clientsApi = await fetch(endpoint);
-    const listClients = await clientsApi.json();
-    return listClients.dados;
-}
-
-async function getAllFuncionarios() {
-
-    const endpoint = 'https://laika-back.onrender.com/v1/laika/funcionarios';
-    const funcionariosApi = await fetch(endpoint);
-    const listFuncionarios = await funcionariosApi.json();
-    return listFuncionarios.dados;
-}
