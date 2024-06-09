@@ -1,5 +1,5 @@
 'use strict'
-import { getCliente, getClientes, deleteCliente, putCliente,postCliente, getAnimal, deleteAnimal, getAnimais, postAnimal, putAnimal, getTipos, getRaca ,getPortes,getAllAnimals,getAllServicos,animalDataById} from './exports.js'
+import {getProdutos, getProduto,getClientes,getCliente,postCliente, putCliente,deleteCliente,getFuncionarios,getFuncionarioId, getCargos,getAnimais,getAnimal, postAnimal,putAnimal,deleteAnimal,getAgendamento,getAgendamentos,postAgendamento,putAgendamento,deleteAgendamento,getTipos,getRaca,getPortes,getCategorias,getServicos} from './exports.js'
 
 const btn_criarConta = document.getElementById('btn_criarConta')
 const telaInfo1 = document.getElementById('telaInfo1')
@@ -8,8 +8,6 @@ const telaInfo2 = document.getElementById('telaInfo2')
 
 btn_criarConta.addEventListener('click',getInfo1)
 function getInfo1(){
-
-    console.log('iiii');
 
     const nome = document.getElementById('nome').value
     const sobrenome = document.getElementById('sobrenome').value
@@ -20,7 +18,6 @@ function getInfo1(){
 
     const telefoneNumero = parseInt(telefone)
 
-    console.log(nome);
 
     if(nome == ''){
         const errorNome = document.getElementById('errorNome')
@@ -44,9 +41,6 @@ function getInfo1(){
             errorSenha.classList.add('hidden');
         }, 3000);
     } else if (confirmarSenha == '' || confirmarSenha != senha){
-
-        console.log(confirmarSenha);
-        console.log(senha);
         const errorConfirmarSenha = document.getElementById('errorConfirmarSenha')
         errorConfirmarSenha.classList.remove('hidden')
 
@@ -64,7 +58,6 @@ function getInfo1(){
 
         const nomeCompleto = `${nome} ${sobrenome}`
 
-        console.log(nomeCompleto);
         telaInfo1.classList.add('hidden')
         telaInfo2.classList.remove('hidden')
 
@@ -120,8 +113,6 @@ function getInfo1(){
                         // complemento: ""
                     }
                 }
-
-                console.log(novoClienteJSON);
 
                 const retornoApi= await postCliente(novoClienteJSON)
             if (retornoApi) {

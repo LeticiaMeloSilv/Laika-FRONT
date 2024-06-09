@@ -1,6 +1,6 @@
 
 'use strict'
-import { getCliente, getClientes, deleteCliente, putCliente, getAnimal, deleteAnimal, deleteAgendamento,getAnimais, postAnimal, putAnimal, getTipos, getRaca, getPortes } from './exports.js'
+import {getProdutos, getProduto,getClientes,getCliente,postCliente, putCliente,deleteCliente,getFuncionarios,getFuncionarioId, getCargos,getAnimais,getAnimal, postAnimal,putAnimal,deleteAnimal,getAgendamento,getAgendamentos,postAgendamento,putAgendamento,deleteAgendamento,getTipos,getRaca,getPortes,getCategorias,getServicos} from './exports.js'
 
 // const idPerfil = 2
 
@@ -29,8 +29,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     const daysInMonth = new Date(yyyy, mm + 1, 0).getDate(); // +1 porque Date usa 0-11 para meses
     const calendar = document.getElementById('calendar');
     for (let day = 1; day <= daysInMonth; day++) {
+        
         const dayElement = document.createElement('div');
         dayElement.className = 'calendar-day rounded-lg bg-gray-200';
+        if (day==dd) {
+            dayElement.className = 'calendar-day rounded-lg bg-red-500';        
+        }
         dayElement.innerHTML = day;
         calendar.appendChild(dayElement);
     }
@@ -67,15 +71,33 @@ document.addEventListener("DOMContentLoaded", async function () {
 
                 dayElement.classList.add('has-appointment');
                 dayElement.addEventListener('click', () => {
+                    const id=agendamento.id
                     const infoAgendamentoServico = document.getElementById('agendamento_servico');
                     const infoAgendamentoPet = document.getElementById('agendamento_pet');
                     infoAgendamentoServico.textContent = json.servicos;
                     infoAgendamentoPet.textContent = json.pet;
                     
             const btn_excluir = document.getElementById('btn_excluir')
-            btn_excluir.addEventListener('click', ()=> excluirAgendamento(json.id))
+            btn_excluir.addEventListener('click', async ()=> {
+                var confirmado = confirm(`Deseja cancelar agendamento?`);
+        if (confirmado) {
+            console.log(json);
+                const status=await deleteAgendamento(id)
+                if (status) {
+                    window.location.reload();
+                    alert('Agendamento cancelado');
+                } else {
+                    alert('Não foi possivel executar Operação');
+
+                }
+            } else {
+                alert('Operação cancelada');
+            }
+            })
         const btn_editar = document.getElementById('btn_editar')
-        btn_editar.addEventListener('click', ()=> atualizarAgendamento(json.id))
+        btn_editar.addEventListener('click', ()=> {
+            alert('contate um atendente para alterar agendamento')
+        })
                     document.getElementById('appointment-details').classList.remove('hidden');
                 });
 
@@ -138,31 +160,7 @@ document.addEventListener("DOMContentLoaded", async function getAgendamentoInfo 
                 document.getElementById('close-button').addEventListener('click', () => {
                     document.getElementById('appointment-details').classList.add('hidden');
     });
-    async function atualizarAgendamento(id) {
-        const inputAtualizarData = document.getElementById('inputAtualizarData')
-            const divAtualizar = document.getElementById('divAtualizar')
-            divAtualizar.classList.remove('hidden')
-            btn_editar.classList.add('hidden')
-        inputAtualizarData.addEventListener('focusout', () => {
-        alert('nn esquece de alterar aq antes dos profs avaliarem')
-        })
-    
-    }
-    async function excluirAgendamento(id) {
-        var confirmado = confirm(`Deseja cancelar agendamento?`);
-        if (confirmado) {
-                const status=await deleteAgendamento(id)
-                if (status) {
-                    window.location.reload();
-                    alert('Agendamento cancelado');
-                } else {
-                    alert('Não foi possivel executar Operação');
-
-                }
-            } else {
-                alert('Operação cancelada');
-            }
-    }
+   
 })
 async function preencherContainer() {
     const info = await getCliente(idPerfil)

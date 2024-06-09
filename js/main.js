@@ -1,4 +1,4 @@
-import { getProdutos, getProduto,  getCategorias} from './exports.js'
+import {getProdutos, getProduto,getClientes,getCliente,postCliente, putCliente,deleteCliente,getFuncionarios,getFuncionarioId, getCargos,getAnimais,getAnimal, postAnimal,putAnimal,deleteAnimal,getAgendamento,getAgendamentos,postAgendamento,putAgendamento,deleteAgendamento,getTipos,getRaca,getPortes,getCategorias,getServicos} from './exports.js'
 
 const containerProdutos=document.getElementById('containerProdutos')
 

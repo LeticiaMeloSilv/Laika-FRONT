@@ -1,14 +1,13 @@
 'use strict'
-import { getCliente, getClientes, deleteCliente, putCliente, deleteAnimal, getAnimais, postAnimal, putAnimal, getTipos, getRaca ,getPortes,getAllServicos,getAnimal, getFuncionarios, postAgendamento} from './exports.js'
+import {getProdutos, getProduto,getClientes,getCliente,postCliente, putCliente,deleteCliente,getFuncionarios,getFuncionarioId, getCargos,getAnimais,getAnimal, postAnimal,putAnimal,deleteAnimal,getAgendamento,getAgendamentos,postAgendamento,putAgendamento,deleteAgendamento,getTipos,getRaca,getPortes,getCategorias,getServicos} from './exports.js'
 
-const idPerfil=2
-// const idPerfil = localStorage.getItem('idUsuario')
+const idPerfil = localStorage.getItem('idUsuario')
 if (!idPerfil) {
   window.location.href = '../index.html'
 }
 
 async function makeSelectSevicos(){
-    const listaServicos = await getAllServicos()
+    const listaServicos = await getServicos()
 listaServicos.forEach(element => {
     const servicoCheck = document.createElement('div')
     servicoCheck.id='divCheckbox'
@@ -47,7 +46,6 @@ async function makeSelectAnimals(){
 // async function makeSelectFuncionarios(){
  
 //     const funcionarios = await getFuncionarios()
-//     console.log(funcionarios);
 //     funcionarios.forEach(funcionario => {
 
 //         const funcionarioOpção = document.createElement('option')
@@ -56,7 +54,6 @@ async function makeSelectAnimals(){
 
 //         let select = document.getElementById('petSelect')
 //         select.appendChild(funcionarioOpção)
-//         console.log(select);
 //         // select.addEventListener('focusout',getDatafuncionarioSelected)
 //         });
         
@@ -204,10 +201,8 @@ btn_agendar.addEventListener('click',async ()=>{
             if (id) { // Verifica se o elemento possui um ID
                 arrayDivFuncionarios.push(Number(id));
             }
-            // console.log(selecionados);
             // arrayDivFuncionarios.push(Number(selecionados[i].value))
     }
-    console.log(arrayDivFuncionarios);
 
     let selectedValue = select.options[select.selectedIndex].value;
 
@@ -218,16 +213,14 @@ btn_agendar.addEventListener('click',async ()=>{
         for (var i = 0; i < checkboxes.length; i++) {
             if (checkboxes[i].type == "checkbox") {
                 if (checkboxes[i].checked) {
-                    console.log(checkboxes[i]);
                     arrayCheckboxServicos.push(Number(checkboxes[i].value))
                 } else {
                 }
             }
         
     }
-    console.log(arrayCheckboxServicos);
     if (dataAgendamento==null|| dataAgendamento==undefined|| dataAgendamento==''|| selectedValue==null|| selectedValue==undefined||selectedValue==''||arrayCheckboxServicos==undefined||arrayCheckboxServicos==null||arrayCheckboxServicos==''||arrayDivFuncionarios==null||arrayDivFuncionarios==undefined||arrayDivFuncionarios=='') {
-        alert('verifique os campos')
+        alert('todos os campos devem ser preenchidos, verifique-os')
     } else {
         
         const novoAgendamentoJSON = {
@@ -237,12 +230,11 @@ btn_agendar.addEventListener('click',async ()=>{
     funcionarios:arrayDivFuncionarios
         }
     
-        console.log(novoAgendamentoJSON);
     
         const retornoApi= await postAgendamento(novoAgendamentoJSON)
     if (retornoApi) {
         alert('Agendado com sucesso')
-        window.location.href='./agendamentos.html'
+        window.location.href='./agendamento.html'
     } else {
         alert('Não foi possivel realizar agendamento, verifique as informações')
     }

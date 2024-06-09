@@ -1,7 +1,6 @@
-import { getProduto } from './exports.js'
+import {getProdutos, getProduto,getClientes,getCliente,postCliente, putCliente,deleteCliente,getFuncionarios,getFuncionarioId, getCargos,getAnimais,getAnimal, postAnimal,putAnimal,deleteAnimal,getAgendamento,getAgendamentos,postAgendamento,putAgendamento,deleteAgendamento,getTipos,getRaca,getPortes,getCategorias,getServicos} from './exports.js'
 
 const idProduto = new URLSearchParams(window.location.search).get('id');
-console.log(idProduto);
 if(!idProduto){
     window.location.href='./main.html'
 } else {
@@ -21,7 +20,6 @@ if(!idProduto){
          quantidadeEstoqueElement.style.color = 'white';
      }
 
-    console.log(info);
 }
 
 

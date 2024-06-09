@@ -21,7 +21,6 @@ export async function getProdutos(filtro) {
         categoriaSearch=filtro.categoria
     }
     const link = `${url}/${versao}/laika/produtos?nome=${nomeSearch}&valorMin=${valorMinSearch}&valorMax=${valorMaxSearch}&categoria=${categoriaSearch}`
-    console.log(link);
     const response=await fetch(link)
     const data=await response.json()
     
@@ -38,7 +37,6 @@ export async function getClientes() {
     const link = `${url}/${versao}/laika/clientes`
     const response=await fetch(link)
     const data=await response.json()
-    console.log(data);
     
     return data.dados
 }
@@ -51,9 +49,6 @@ export async function getCliente(id) {
 }
 
 export async function postCliente(cliente){
-
-    console.log('enviar');
-console.log(cliente);
     const link = `${url}/${versao}/laika/cliente`
     
     const options = {
@@ -76,9 +71,7 @@ export async function putCliente(cliente,id) {
         },
         body:JSON.stringify(cliente)
     }
-    console.log(cliente);
     const response=await fetch(link,options)
-    console.log(response);
     return response.ok
 }
 export async function deleteCliente(id) {
@@ -149,7 +142,6 @@ export async function putAnimal(animal,id) {
         },
         body:JSON.stringify(animal)
     }
-    console.log(animal);
     const response=await fetch(link,options)
     return response.ok
 }
@@ -249,7 +241,7 @@ export async function getCategorias() {
     return data.dados
 }
 // ----------------------------------------------------SERVICOS----------------------------------------------------
-export async function getAllServicos() {
+export async function getServicos() {
     
     const endpoint = 'https://laika-back.onrender.com/v1/laika/servicos';
     const funcionariosApi = await fetch(endpoint);

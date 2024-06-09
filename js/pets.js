@@ -1,4 +1,4 @@
-import { getCliente, getClientes, deleteCliente, putCliente, getAnimal, deleteAnimal, getAnimais, postAnimal, putAnimal, getTipos, getRaca ,getPortes} from './exports.js'
+import {getProdutos, getProduto,getClientes,getCliente,postCliente, putCliente,deleteCliente,getFuncionarios,getFuncionarioId, getCargos,getAnimais,getAnimal, postAnimal,putAnimal,deleteAnimal,getAgendamento,getAgendamentos,postAgendamento,putAgendamento,deleteAgendamento,getTipos,getRaca,getPortes,getCategorias,getServicos} from './exports.js'
 
 'use strict'
 
@@ -28,7 +28,6 @@ criar.addEventListener('click', cadastrarPet)
 document.addEventListener('DOMContentLoaded', async (event) => {
     const categoriaSelect = document.getElementById('novoTipo');
     const data=await getTipos()
-    console.log(data);
     data.forEach(categoria => {
         const option = document.createElement('option');
         option.value = categoria.id;
@@ -56,7 +55,6 @@ if (categoriaId) {
 document.addEventListener('DOMContentLoaded', async (event) => {
     const porteSelect = document.getElementById('novoPorte');
     const data=await getPortes()
-    console.log(data);
     data.forEach(categoria => {
         const option = document.createElement('option');
         option.value = categoria.id;
@@ -112,11 +110,9 @@ const mesAtual = String(today.getMonth() + 1).padStart(2, '0');
 const anoAtual = today.getFullYear();
 
 function criarCard(dados) {
-console.log('criarCard');
     const card = document.createElement('div')
     card.classList.add('flex', 'flex-col', 'items-center', 'bg-white', 'p-1.5', 'w-52', 'h-68', 'rounded-xl')
     card.addEventListener('click', () => {
-        console.log('entrei');
         abrirCardAnimal(dados.id)
     })
 
@@ -174,7 +170,6 @@ if (dados.raca) {
 async function preencherContainer() {
     const container = document.querySelector('main')
     const info = await getCliente(idPerfil)
-    console.log(info);
     document.getElementById('nomeUser').textContent = info.nome
     const infoAnimal = info.animais
     infoAnimal.forEach(dado => {
@@ -189,7 +184,6 @@ async function abrirCardAnimal(idBixo) {
     telaNormal.classList.add('hidden')
 
 const animalAntigo = await getAnimal(idBixo)
-console.log(animalAntigo);
 
 const imgLink=document.getElementById('imgEditadaLink')
 imgLink.value=animalAntigo.img
@@ -206,7 +200,6 @@ nome.value = animalAntigo.nome
 
 const dataNascimento = document.getElementById('editarData')
 dataNascimento.value = animalAntigo.nascimento.substring(0, 10)
-console.log(dataNascimento.value);
 
 const porteSelect = document.getElementById('editarPorte');
 
@@ -271,7 +264,6 @@ editar.addEventListener('click', async ()=>{
       porte_id: Number(porteAtualizado),
       raca_id: Number(racaAtualizado)
     }
-    console.log(novosDados);
     if (novosDados) {
       let status = await putAnimal(novosDados, idBixo)
             

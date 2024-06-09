@@ -1,4 +1,4 @@
-import { getCliente, getClientes, deleteCliente, putCliente, getAnimal, deleteAnimal, getAnimais, postAnimal, putAnimal, getTipos, getRaca ,getPortes,postarNovoCliente} from './exports.js'
+import {getProdutos, getProduto,getClientes,getCliente,postCliente, putCliente,deleteCliente,getFuncionarios,getFuncionarioId, getCargos,getAnimais,getAnimal, postAnimal,putAnimal,deleteAnimal,getAgendamento,getAgendamentos,postAgendamento,putAgendamento,deleteAgendamento,getTipos,getRaca,getPortes,getCategorias,getServicos} from './exports.js'
 
 'use strict'
 
@@ -131,15 +131,15 @@ function editarPerfil(){
       }
     }
     if (novosDados) {
-      let status = await putCliente(novosDados, idPerfil)
-      console.log(novosDados);
-            
+      let status = await putCliente(novosDados, idPerfil)            
       if (status) {
         alert('Dados Atualizados com sucesso')
+        window.location.reload();
         // window.location.href = './perfil.html'
       }
       else {
         alert('Não foi possivel atualizar seus dados')
+        window.location.reload();
         // window.location.href = './perfil.html'
       }
     }
@@ -157,7 +157,6 @@ function editarPerfil(){
   }
   async function preencherContainer() {
     const info = await getCliente(idPerfil)
-    console.log(info);
     document.getElementById('nomeUser').textContent = info.nome
 }
 preencherContainer()
