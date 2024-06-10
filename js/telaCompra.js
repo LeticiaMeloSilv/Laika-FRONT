@@ -1,15 +1,26 @@
-import {putProduto,getProdutos, getProduto,getClientes,getCliente,postCliente, putCliente,deleteCliente,getFuncionarios,getFuncionarioId, getCargos,getAnimais,getAnimal, postAnimal,putAnimal,deleteAnimal,getAgendamento,getAgendamentos,postAgendamento,putAgendamento,deleteAgendamento,getTipos,getRaca,getPortes,getCategorias,getServicos} from './exports.js'
+import {putProduto, getProduto, iniciarTelaCarregamento} from './exports.js'
 
 const idProduto = new URLSearchParams(window.location.search).get('id');
-const btn_comprar=document.getElementById('btn_comprar')
 if(!idProduto){
-    window.location.href='./main.html'
-} else {
-    let info = await getProduto(idProduto)
-    let nome=document.getElementById('nome').textContent = info.nome
-    let descricao=document.getElementById('descricao').textContent = info.descricao
-    let preco=document.getElementById('preco').textContent = "R$" + info.preco
-    let img=document.getElementById('imagem').src = info.img
+    window.location.href='./produtos.html'
+} 
+
+let info
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const telaCarregamento = document.createElement('div');
+    iniciarTelaCarregamento(telaCarregamento)
+    info = await getProduto(idProduto)
+    if(info){
+        telaCarregamento.classList.add('hidden')
+        executarSite()
+    }
+  });
+function executarSite(){
+    document.getElementById('nome').textContent = info.nome
+    document.getElementById('descricao').textContent = info.descricao
+    document.getElementById('preco').textContent = "R$" + info.preco
+    document.getElementById('imagem').src = info.img
     const quantidadeCompra=document.getElementById('quantidadeCompra')
     let quantidadeEstoqueElement = document.getElementById('quantidadeEstoque'); 
      let quantidadeEstoque = info.quantidade_estoque;
@@ -21,60 +32,38 @@ if(!idProduto){
          quantidadeEstoqueElement.style.backgroundColor = 'orange';
          quantidadeEstoqueElement.style.color = 'white';
      }
-     btn_comprar.addEventListener('click', ()=>{
-        const quantidadeCompra=document.getElementById('quantidadeCompra').value
+     document.getElementById('fecharContainer').addEventListener('click', ()=>{
+        document.getElementById('fundoComprarProduto').classList.add('hidden')
+    })
+
+    let precoTotal = info.preco
+
+     document.getElementById('btn_comprar').addEventListener('click', ()=>{
+        document.getElementById('fundoComprarProduto').classList.remove('hidden')
+        document.getElementById('pNome').textContent = info.nome
+        document.getElementById('pSubTotal').textContent = "Subtotal: R$"+info.preco
+        document.getElementById('pTotal').textContent = "Total: R$"+precoTotal
+
+        quantidadeCompra.addEventListener('input',()=>{
+            precoTotal = info.preco * quantidadeCompra.value
+            if(quantidadeCompra.value>=0)
+            document.getElementById('pTotal').textContent = "Total: R$"+precoTotal 
+        })
         
-            const fundoGeral=document.getElementById('fundoComprarProduto')
-            fundoGeral.classList.add('absolute','top-0', 'left-0', 'w-full', 'h-full', 'bg-black','bg-opacity-40','flex', 'items-center','justify-center')
-            const fecharContainer=document.createElement('img')
-            fecharContainer.src='../img/Add.png'
-fecharContainer.classList.add('self-start','rotate-45', 'cursor-pointer')
-fecharContainer.addEventListener('click', ()=>{
-    fundoGeral.classList.add('hidden')
-})
-            const fundo=document.createElement('div')
-            fundo.classList.add('bg-white','w-[50%]','h-[50%]','flex','items-center','flex-col')
-            const pNome=document.createElement('p')
-            pNome.classList.add('text-3xl')
-            pNome.textContent=`Produto: ${nome}`
-            const pQuantidade=document.createElement('p')
-            pQuantidade.classList.add('text-lg')
-            pQuantidade.textContent=`Quantidade: ${quantidadeCompra}`
-            const pSubTotal=document.createElement('p')
-            pSubTotal.textContent=`subTotal: ${preco}`
-            pSubTotal.classList.add('text-lg')
-            const valorTotal=info.preco*quantidadeCompra
-            const pTotal=document.createElement('p')
-            pTotal.classList.add('text-xl')
-            pTotal.textContent=`Total: R$ ${valorTotal}`
-            const btn=document.createElement('button')
-            btn.classList.add('bg-purple-500', 'p-5','text-white', 'text-2xl', 'rounded-xl')
-            btn.textContent='Comprar'
-            fundo.replaceChildren(fecharContainer,pNome,pQuantidade,pSubTotal,pTotal,btn)
-            fundoGeral.appendChild(fundo)
+        
+
+        const btn = document.getElementById('btnComprar')
             btn.addEventListener('click', async ()=>{
-                const quantidadeAtualizada=quantidadeEstoque-quantidadeCompra
-                const precoAtualizado=info.preco
-                console.log(info);
-                const categoriaId=info.categoria_id
+                const quantidadeAtualizada=quantidadeEstoque-quantidadeCompra.value
                 if (quantidadeAtualizada<0) {
-                    alert(`Não é possivel realizar a compra de ${quantidadeCompra} produtos por falta de estoque`)
-                    window.location.reload();
+                    alert(`Não é possivel realizar a compra de ${quantidadeCompra.value} produtos por falta de estoque`)
                 } else {
-                    if (nome==null||nome==''||nome==undefined||
-                        descricao==null||descricao==''||descricao==undefined||
-                        precoAtualizado==null||precoAtualizado==''||precoAtualizado==undefined||
-                        img==null||img==''||img==undefined||
-                        quantidadeAtualizada==null||quantidadeAtualizada==''||quantidadeAtualizada==undefined) {
-                    alert('Não foi possivel realizar compra, favor, contate um atendente')
-                    window.location.reload();
-                    } else {
                         const dados={
-                            nome:nome,
-                            descricao:descricao,
-                            preco: Number(precoAtualizado),
-                            idCategoria:categoriaId,
-                            img: img,
+                            nome:info.nome,
+                            descricao:info.descricao,
+                            preco: info.preco,
+                            idCategoria:info.categoria_id,
+                            img:info.img,
                             quantidade_estoque: quantidadeAtualizada
                         }
                         console.log(dados);
@@ -86,7 +75,6 @@ fecharContainer.addEventListener('click', ()=>{
                             alert('Não foi possivel executar a compra')
                             window.location.reload();
                         }
-                    }    
                 }
                 
             })

@@ -11,35 +11,35 @@
 
 
 <body class="flex flex-col bg-[#FFDD95] gap-3">
-    <header class="flex flex-col items-center py-2 w-full bg-[#FFD274] ">
-        <div class="flex gap-5 justify-between w-full text-xl  text-zinc-700 px-10 text-opacity-80">
-            <div class="flex gap-5 items-start my-auto">
-                <img src="../img/logo.png" alt="Company Logo" class="shrink-0 aspect-[1.06] fill-slate-500 w-[68px]" />
-                <input type="text"
-                    class="flex gap-5 self-stretch px-5 py-4 my-auto w-full text-xl bg-[#FFD274] border-[#2A00A8] border-solid border-[5px] rounded-[32px] text-zinc-700 text-opacity-80 "
-                    placeholder="O que seu pet precisa?">
-                <img src="../img/search.png" alt="Botao Pesquisar" />
+    <header class="bg-[#FFD274] relative h-32 flex items-center justify-center w-full">
+        <div class="w-[90%] flex justify-between">
+            <a href="./home.html">
+                <img class="w-16 h-16" src="../img/logo.png">
+            </a>
+            <div class="flex flex-row items-center justify-end w-1/5">
+                <div class="flex gap-10 hidden" id="login">
+                    <a href="./login.html">Entrar</a>
+                    <p> | </p>
+                    <a href="./signUp.html">Cadastrar</a>
+                </div>
+                    <img class="hidden cursor-pointer" id="userIcon">
             </div>
-            <img src="../img/usuario.png" alt="User Avatar" class="shrink-0 rounded-full aspect-[1.04] w-[74px]" />
         </div>
-        <hr class="self-stretch mt-4 w-full bg-black border border-black border-solid">
-        <nav class="flex gap-5 px-5 mt-3.5 text-2xl text-violet-900 w-[695px] ">
-            <a href="./agendamento_servicos.html" class="flex-auto">Agendar serviços</a>
-            <a href="#" class="flex-auto">Veterinário</a>
-            <a href="#" class="flex-auto">Produtos</a>
-        </nav>
+        <hr class="border-2 border-[#2A00A8] w-full absolute bottom-0">
     </header>
     <main class="flex items-center justify-center flex-row w-full gap-10 ">
-        <aside
-            class="gap-3 flex flex-col items-center self-stretch px-14 py-9 w-2/6 text-3xl text-center bg-[#FFD274] text-zinc-900">
-            <p class="font-extrabold" id="nomeUser">Nome do cliente</p>
-            <hr class=" self-stretch bg-[#86A7FC] border-[#86A7FC] border-solid border-2">
-            <a href="./pedidos.html" class=" mt-5">Meus
-                pedidos</a>
-            <a href="./perfil.html" class="">Dados da conta</a>
-            <a href="./pets.html" class="">Meus Pets</a>
-            <a href="./agendamento.html" class="self-stretch border-b-[#86A7FC] border-b-solid border-b-4">Seus agendamentos</a>
-            <a href="../index.html" class="mt-16 font-extrabold">VOLTAR</a>
+        <aside class="gap-3 flex flex-col justify-between items-center self-stretch px-14 py-9 w-2/6 text-3xl text-center bg-[#FFD274] text-zinc-900">
+            <div class="w-full">
+                <p class="font-extrabold h-10" id="nomeUser"></p>
+                <hr class=" self-stretch bg-[#86A7FC] border-[#86A7FC] border-solid border-2">
+            </div>
+            <div class="w-full flex flex-col gap-10 items-center">
+                <a href="./pedidos.html" class="border-b-4 border-transparent">Meus pedidos</a>
+                <a href="./perfil.html" class="border-b-4 border-transparent">Dados da conta</a>
+                <a href="./pets.html"  class='border-b-4 border-transparent'>Meus Pets</a>
+                <a href="./agendamento.html" class="border-b-[#86A7FC] w-fit border-b-solid border-b-4">Seus agendamentos</a>
+            </div>
+            <a href="./home.html" class="mt-16 font-extrabold">VOLTAR</a>
         </aside>
         <div class="flex flex-col">
             <style>

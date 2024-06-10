@@ -5,25 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laika</title>
-    <link rel="stylesheet" href="../signUp.css">
     <script src="../js/signUp.js" defer type="module"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="h-screen w-screen">
+<body class="bg-[#FFDD95] h-screen w-screen">
     <main class="flex h-full w-full flex-row">
-        <div id="telaInfo1" class="criacao flex flex-col h-screen w-1/3 pl-14 py-6 justify-around">
-            <a href="../login/login.html">
-                <div class="flex w-full h-10 items-center">
-                    <img class="h-full" src="../img/Arrow back.png" alt="">
-                    <span>Voltar</span>
-                </div>
+        <div id="telaInfo1" class="#FFD274 flex flex-col h-screen w-1/3 pl-14 py-6 justify-around">
+            <a href="./home.html">
+                <img class="h-full" src="../img/Arrow back.png" alt="">
             </a>
             <div class="flex flex-col flex-grow justify-around">
                 <div class="space-y-6">
                     <div class="space-y-2 group">
-                        <h1 id="criarConta1" class="text-3xl font-bold">CRIE SUA CONTA</h1>
-                        <hr class="linha h-2 rounded-lg w-5/6">
+                        <h1 class="text-3xl font-bold">CRIE SUA CONTA</h1>
+                        <hr class="bg-[#86A8FF] border-[#86A8FF] h-2 rounded-lg w-5/6">
                     </div>
                     <h2 class="text-xl font-bold w-1/2">Para ter os melhores cuidados para seu pet!</h2>
                 </div>
@@ -83,24 +79,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="space-y-2 group" id="btn_criarConta">
-                    <h1 class="text-3xl font-bold group-hover:w-full">CRIAR CONTA</h1>
-                    <hr class="linha h-2 rounded-lg w-0 group-hover:w-5/6 hr-transicao">
+                <div class="space-y-2 group">
+                    <h1 id="criarConta1" class="text-3xl font-bold group-hover:w-full uppercase">criar conta</h1>
+                    <hr class="bg-[#86A8FF] border-[#86A8FF] h-2 rounded-lg w-0 group-hover:w-5/6" class="transition: width 0.3s ease-in-out">
                 </div>
             </div>
         </div>
-        <div id="telaInfo2" class="criacao flex flex-col hidden h-screen w-1/3 pl-14 py-4">
-            <a href="../signUp/signUp.html">
-                <div class="flex w-full h-10 items-center">
+        <div id="telaInfo2" class="#FFD274 flex flex-col hidden h-screen w-1/3 pl-14 py-4">
+                <div id="backA" class="flex w-full h-10 items-center cursor-pointer">
                     <img class="h-full" src="../img/Arrow back.png" alt="">
                     <span>Voltar</span>
                 </div>
-            </a>
             <div class="flex flex-col flex-grow justify-around">
                 <div class="space-y-6">
                     <div class="space-y-2 group">
                         <h1 class="text-3xl font-bold">ADICIONE SEU ENDEREÇO</h1>
-                        <hr class="linha h-2 rounded-lg w-5/6">
+                        <hr class="bg-[#86A8FF] border-[#86A8FF] h-2 rounded-lg w-5/6">
                     </div>
                     <h2 class="text-xl font-bold w-1/2">Último passo para cadastrar sua conta!</h2>
                 </div>
@@ -109,7 +103,6 @@
                         <h3 class="font-bold text-xl">Rua <span id="errorRua"
                                 class="hidden text-md text-red-500 font-bold">*</span></h3>
                         <div class="flex flex-row border-b-4 border-black">
-                            <img src="../img/Email.png" alt="">
                             <input id="rua" class="w-full focus:outline-none rounded-lg bg-transparent" type="text">
                         </div>
                     </div>
@@ -117,7 +110,6 @@
                         <h3 class="font-bold text-xl">Bairro <span id="errorBairro"
                                 class="hidden text-md text-red-500 font-bold">*</span></h3>
                         <div class="flex flex-row border-b-4 border-black">
-                            <img src="../img/Padlock Outline.png" alt="">
                             <input id="bairro" class="w-full focus:outline-none rounded-lg bg-transparent" type="text">
                         </div>
                     </div>
@@ -125,7 +117,6 @@
                         <h3 class="font-bold text-xl">Cidade <span id="errorCidade"
                                 class="hidden text-md text-red-500 font-bold">*</span></h3>
                         <div class="flex flex-row border-b-4 border-black">
-                            <img src="../img/Padlock Outline.png" alt="">
                             <input id="cidade" class="w-full focus:outline-none rounded-lg bg-transparent" type="text">
                         </div>
                     </div>
@@ -133,14 +124,20 @@
                         <h3 class="font-bold text-xl">Estado <span id="errorEstado"
                                 class="hidden text-md text-red-500 font-bold">*</span></h3>
                         <div class="flex flex-row border-b-4 border-black">
-                            <img src="../img/Phone.png" alt="">
                             <input id="estado" class="w-full focus:outline-none rounded-lg bg-transparent" type="text">
+                        </div>
+                    </div>
+                    <div class="w-full">
+                        <h3 class="font-bold text-xl">Número <span id="errorNumero"
+                                class="hidden text-md text-red-500 font-bold">*</span></h3>
+                        <div class="flex flex-row border-b-4 border-black">
+                            <input id="numero" class="w-full focus:outline-none rounded-lg bg-transparent" type="text">
                         </div>
                     </div>
                 </div>
                 <div class="space-y-2 group">
-                    <h1 id="criarConta2" class="text-3xl font-bold group-hover:w-full">CRIAR CONTA</h1>
-                    <hr class="linha h-2 rounded-lg w-0 group-hover:w-5/6 hr-transicao">
+                    <h1 id="criarConta2" class="text-3xl font-bold uppercase group-hover:w-full">criar conta</h1>
+                    <hr class="bg-[#86A8FF] border-[#86A8FF] h-2 rounded-lg w-0 group-hover:w-5/6 hr-transicao">
                 </div>
             </div>
         </div>
@@ -164,9 +161,9 @@
                     <h2 class="text-xl">E muito mais!</h2>
                 </div>
             </div>
-            <img class="h-editado w-5/6 ml-auto" src="../img/image_2-removebg-preview 1.png" alt="">
+            <img class="h-[77%] w-5/6 ml-auto" src="../img/image_2-removebg-preview 1.png" alt="">
         </div>
-        <img class="absolute w-3/4 z--1 h-full bottom-0 right-0" src="../img/Vector (1).png" alt="">
+        <img class="absolute w-3/4 z-[-1] h-full bottom-0 right-0" src="../img/Vector (1).png" alt="">
     </main>
 </body>
 

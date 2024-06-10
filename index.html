@@ -6,36 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@400;700&display=swap" rel="stylesheet">
-    <script src="./js/landing.js" type="module"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Laika</title>
 </head>
 
-<body class="h-full w-full bg-[#FFDD95]">
-    <header class="bg-[#FFD274] h-32 flex flex-row items-center justify-center w-full">
-        <div class="w-[90%] flex justify-between">
-            <img class="w-16 h-16" src="./img/logo.png" alt="">
-            <div class="flex flex-row items-center justify-between w-1/5">
-                <div class="flex gap-10" id="">
-                    <a href="./html/login.html">Entrar</a>
-                    <p> | </p>
-                    <a href="./html/signUp.html">Cadastrar</a>
-                </div>
-            </div>
-        </div>
 
-    </header>
-    <hr class="border-2 border-[#2A00A8]">
-    <main class="">
-        <div class="flex flex-row mt-20 justify-around">
+<body class="h-full w-full bg-[#FFDD95]">
+    <main class="flex flex-col gap-24">
+        <div class="flex flex-row mt-20 justify-around h-[70vh]">
             <div class="ml-10 w-96 flex  justify-center flex-col">
-                <h1 class="text-[#496989] text-8xl font-OleoScript">Laika</h1>
-                <h3 class="text-2xl">Aqui você encontra de tudo para o seu pet!</h3>
-                <h5 class="text-lg pl-6">Consultas, Produtos, banho e tosa, e muito mais</h5>
-                <div class=" flex items-center justify-center"></div>
-                <a href="./html/home.html">
-                    <button class="rounded-sm bg-[#86A7FC] p-3">Venha Conferir!</button></a>
+                <h1 class="text-[#496989] text-8xl font-OleoScript" style='font-family: "Oleo Script", system-ui;'>Laika</h1>
+                <h3 class="text-3xl">Aqui você encontra de tudo para o seu pet!</h3>
+                <h5 class="text-xl pl-6">Consultas, Produtos, banho e tosa, e muito mais</h5>
+                <a href="./html/home.html" class="cursor-default flex h-fit w-fit-max items-center justify-center">
+                    <button class="duration-300 font-bold text-blue-600 mt-20 rounded-xl bg-[#86A7FC] h-[80%] w-[80%] text-2xl hover:text-3xl hover:h-full hover:w-full hover:text-blue-100 hover:rounded-3xl">Venha Conferir!</button>
+                </a>
             </div>
             <div class="flex flex-row w-1/2 gap-4">
                 <img src="./img/cachorroNoFundoLaranja.png" alt="">
@@ -46,14 +35,14 @@
             <div class="flex p-10 items-center gap-10 w-2/3 ml-auto">
                 <img class="h-70" src="./img/cachorroTomandoBanho.png" alt="">
                 <div class="">
-                    <p class="text-xl">Banho</p>
-                    <p>O banho regular ajuda a prevenir doenças de pele, como fungos e parasitas.</p>
+                    <p class="text-4xl font-bold" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Banho</p>
+                    <p class="text-2xl" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">O banho regular ajuda a prevenir doenças de pele, como fungos e parasitas.</p>
                 </div>
             </div>
             <div class="flex bg-[#86A7FC] rounded-r-full bg-cover w-2/3 pl-10 items-center justify-evenly gap-10 mr-auto">
                 <div class=" ">
-                    <p class="text-xl">Atendimento veterinário</p>
-                    <p>Levá-lo com a frequência correta ao veterinário para realizar exames é a forma mais certa de
+                    <p class="text-4xl font-bold" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Atendimento veterinário</p>
+                    <p class="text-2xl" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">Levá-lo com a frequência correta ao veterinário para realizar exames é a forma mais certa de
                         garantir um animal saudável.</p>
                 </div>
                 <img class="h-70 " src="./img/cachorroNoVeterinario.png" alt="">
@@ -61,8 +50,8 @@
             <div class="flex p-10 items-center gap-10 w-2/3 ml-auto">
                 <img class="h-70" src="./img/cachorroTosando.png" alt="">
                 <div class="">
-                    <p class="text-xl">Tosa e Garras</p>
-                    <p>A tosa frequente pode ajudar o pet a se manter ventilado e saudável, se as unhas estiverem muito
+                    <p class="text-4xl font-bold" style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">Tosa e Garras</p>
+                    <p class="text-2xl"style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">A tosa frequente pode ajudar o pet a se manter ventilado e saudável, se as unhas estiverem muito
                         grandes, a sustentação e o equilíbrio do pet podem ser prejudicados, o que ocasiona problemas na
                         coluna</p>
                 </div>

@@ -4,69 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
     <script src="../js/pets.js" defer type="module"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Laika</title>
 </head>
 
 <body class="flex flex-col bg-[#FFDD95] gap-3">
-    <header class="flex flex-col items-center py-2 w-full bg-[#FFD274] ">
-        <div class="flex gap-5 justify-between w-full text-xl  text-zinc-700 px-10 text-opacity-80">
-            <div class="flex gap-5 items-start my-auto">
-                <img src="../img/logo.png" alt="Company Logo" class=" aspect-[1.06] fill-slate-500 w-[68px]" />
-                <input type="text"
-                    class="flex gap-5 self-stretch px-5 py-4 my-auto w-full text-xl bg-[#FFD274] border-[#86A7FC] border-solid border-[5px] rounded-[32px] text-zinc-700 text-opacity-80 "
-                    placeholder="O que seu pet precisa?">
-                <img src="../img/search.png" alt="Botao Pesquisar" />
+    <header class="bg-[#FFD274] relative h-32 flex items-center justify-center w-full">
+        <div class="w-[90%] flex justify-between">
+            <a href="./home.html">
+                <img class="w-16 h-16" src="../img/logo.png">
+            </a>
+            <div class="flex flex-row items-center justify-end w-1/5">
+                <div class="flex gap-10 hidden" id="login">
+                    <a href="./login.html">Entrar</a>
+                    <p> | </p>
+                    <a href="./signUp.html">Cadastrar</a>
+                </div>
+                <img class="hidden cursor-pointer" id="userIcon">
             </div>
-            <img src="../img/usuario.png" alt="User Avatar" class=" rounded-full aspect-[1.04] w-[74px]" />
         </div>
-        <hr class="self-stretch mt-4 w-full bg-black border border-black border-solid">
-        <nav class="flex gap-5 px-5 mt-3.5 text-2xl text-violet-900 w-[695px] ">
-            <a href="./agendamento_servicos.html" class="flex-auto">Agendar serviços</a>
-            <a href="#" class="flex-auto">Veterinário</a>
-            <a href="#" class="flex-auto">Produtos</a>
-        </nav>
+        <hr class="border-2 border-[#2A00A8] w-full absolute bottom-0">
     </header>
-    <main class="flex items-center justify-center flex-row w-full gap-10 ">
-        <aside
-            class="gap-3 flex flex-col items-center self-stretch px-14 py-9 w-2/6 text-3xl text-center bg-[#FFD274] text-zinc-900">
-            <p class="font-extrabold" id="nomeUser"></p>
-            <hr class=" self-stretch bg-[#86A7FC] border-[#86A7FC] border-solid border-2">
-            <a href="./pedidos.html" class="mt-5">Meus pedidos</a>
-            <a href="./perfil.html" class="">Dados da conta</a>
-            <a href="./pets.html" class="border-b-[#86A7FC] border-b-solid border-b-4 self-stretch">Meus Pets</a>
-            <a href="./agendamento.html" class="self-stretch">Seus agendamentos</a>
-            <a href="../index.html" class="mt-16 font-extrabold">VOLTAR</a>
+    <main class="flex items-center justify-between flex-row w-full gap-10 h-[40rem] px-40">
+        <aside class="gap-3 flex flex-col justify-between items-center self-stretch px-14 py-9 w-2/6 text-3xl text-center bg-[#FFD274] text-zinc-900">
+            <div class="w-full">
+                <p class="font-extrabold h-10" id="nomeUser"></p>
+                <hr class=" self-stretch bg-[#86A7FC] border-[#86A7FC] border-solid border-2">
+            </div>
+            <div class="w-full flex flex-col gap-10 items-center">
+                <a href="./pedidos.html" class="border-b-4 border-transparent">Meus pedidos</a>
+                <a href="./perfil.html" class="border-b-4 border-transparent">Dados da conta</a>
+                <a href="./pets.html" class="border-b-[#86A7FC] w-fit border-b-solid border-b-4">Meus Pets</a>
+                <a href="./agendamento.html" class="border-b-4 border-transparent">Seus agendamentos</a>
+            </div>
+            <a href="./home.html" class="mt-16 font-extrabold">VOLTAR</a>
         </aside>
         <div class="flex flex-col">
             <div class="flex items-center justify-center pb-3">
-                <h1 id="meusPets" class="text-3xl font-extrabold text-zinc-900 border-b-[#86A7FC] border-b-solid border-b-[5px]">
+                <h1 id="meusPets"
+                    class="text-3xl font-extrabold text-zinc-900 border-b-[#86A7FC] border-b-solid border-b-[5px]">
                     Meus Pets
                 </h1>
-                <input type="text" id="nomeEditado" class=" hidden bg-transparent text-3xl font-extrabold text-zinc-900 border-b-[#86A7FC] border-b-solid border-b-[5px]">
-                <img class="hidden" id="iconEditar" src="../img/editar.png" alt="">
+                <input type="text" id="nomeEditado"
+                    class=" hidden bg-transparent text-3xl font-extrabold text-zinc-900 border-b-[#86A7FC] border-b-solid border-b-[5px]">
+                <img class="hidden" id="iconEditar" src="../img/editar.png">
             </div>
-
-
             <!-- TELA NORMAL -->
-            <div class="grid gap-5 overflow-y-auto scroll-snap-type-y-mandatory h-96 grid-cols-3" id="telaNormal">
+            <div class="grid gap-5 overflow-y-auto overflow-x-hidden h-96 grid-cols-3" id="telaNormal">
                 <div id="btn_cadastrarPet"
-                    class="flex flex-col items-center justify-center px-3 py-6 gap-3 text-xl font-extrabold bg-white w-52 h-68 rounded-xl">
-                    <img src="../img/Add.png" alt="" class="" />
+                    class="flex flex-col cursor-pointer items-center justify-center px-3 py-6 gap-3 text-xl font-extrabold bg-white w-52 h-68 rounded-xl">
+                    <img src="../img/Add.png"/>
                     <p class="w-[50%]">Adicionar Novo Pet</p>
                 </div>
-                <!-- <div class="flex flex-col items-center bg-white p-1.5 w-52 h-60 rounded-xl">
-                    <img class="self-end" src="../img/iconAnimal.png" alt="">
-                    <img src="../img/pet.png" alt="Foto do Pet" class="self-center rounded-full" />
-                    <h2 class="mt-2.5 text-xl font-extrabold self-center">Corujita</h2>
-                    <p class="self-center">Raça absoluta</p>
-                    <hr class="border-4 border-solid bg-violet-950 border-violet-950 w-[80%]">
-                    <div class="flex gap-5 mt-2 text-zinc-900">
-                        <p>5 anos</p>
-                        <p>10kg</p>
-                    </div>
-                </div> -->
             </div>
 
 
@@ -74,19 +64,17 @@
             <!-- CRIAR PET -->
             <div id="criarPet" class="hidden">
                 <div class="flex gap-5 justify-center items-center ">
-                    <div class="flex flex-col w-full p-5 gap-5  bg-white rounded-xl text-zinc-900">
+                    <div class="flex flex-col w-full p-5 gap-5 bg-white rounded-xl text-zinc-900">
                         <div class="border-[#86A7FC] border-solid border-2 rounded-lg">
                             <h2 class="font-extrabold">Nome</h2>
                             <input type="text" id="novoNome" placeholder="Ex: Corujita">
                         </div>
                         <div class="border-[#86A7FC] border-solid border-2 rounded-lg">
                             <h2 class="font-extrabold">Porte</h2>
-                            <select name="porte" id="novoPorte">
-                                <option value="">Selecione:</option>
-                            </select>
+                            <select name="porte" id="novoPorte"></select>
                         </div>
                         <div class="border-[#86A7FC] border-solid border-2 rounded-lg">
-                            <h2 class="font-extrabold" >Peso</h2>
+                            <h2 class="font-extrabold">Peso</h2>
                             <input type="text" placeholder="Ex: 10kg" id="novoPeso">
                         </div>
                         <div class="border-[#86A7FC] border-solid border-2 rounded-lg">
@@ -95,23 +83,19 @@
                         </div>
                         <div class="border-[#86A7FC] border-solid border-2 rounded-lg">
                             <h2 class="font-extrabold">Tipo</h2>
-                            <select name="raca" id="novoTipo">
-                                <option value="0">Selecione:</option>
-                            </select>
+                            <select name="raca" id="novoTipo"></select>
                         </div>
                         <div class="border-[#86A7FC] border-solid border-2 rounded-lg">
                             <h2 class="font-extrabold">Raça</h2>
-                            <select name="raca" id="novaRaca">
-                                <option value="0">SRD</option>
-                            </select>
+                            <select name="raca" id="novaRaca"></select>
                         </div>
                     </div>
 
                     <div class="flex flex-col justify-center items-center">
                         <div class=" px-8 py-8 bg-[#FFD274] rounded-full border-solid border-[3px] border-violet-950">
                             <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a764a351cf3ab2f679cf4a6d28154165f9718c2e729595fddf57818106c6f124?apiKey=5f9a157d72c049aa98235468a977c951&"
-                                alt="Imagem do pet" id="novafotoPetImg"/>
-                                <input type="text" placeholder="Link da foto do pet" id="novaFotoPet">
+                                alt="Imagem do pet" id="novafotoPetImg" />
+                            <input type="text" placeholder="Link da foto do pet" id="novaFotoPet">
                         </div>
                         <button id="btn_mandarInfo"
                             class="justify-center self-center px-11 py-4 mt-5 text-xl font-extrabold text-center bg-white rounded-xl border-solid border-[3px] border-violet-950 text-zinc-900">
@@ -119,23 +103,13 @@
                         </button>
                     </div>
                 </div>
-                <!-- <select name="tipoPet" id="tipoPet" class="flex gap-5 justify-between px-9 py-4 mt-3.5 bg-white rounded-xl">
-
-                        <option value="cachorro"><img src="../img/iconeCachorro.png" alt=""></option>
-                        <option value="gato"><img src="../img/iconeGato.png" alt=""></option>
-                        <option value="hamister"> <img src="../img/iconeHamister.png" alt=""></option>
-                        <option value="cobra"><img src="../img/iconeCobra.png" alt=""></option>
-                        <option value="tartaruga"><img src="../img/iconeTartaruga.png" alt=""></option>
-                        <option value="passaro"><img src="../img/iconePassaro.png" alt=""></option>
-                    </select> -->
-                <!-- class="shrink-0 aspect-[1.82] w-[82px]"  -->
                 <div class="flex gap-5 justify-between px-9 py-4 mt-3.5 bg-white rounded-xl">
-                    <img src="../img/iconeCachorro.png" alt="" class=" border-2 border-violet-950 border-solid" />
-                    <img src="../img/iconeCobra.png" alt="" class=" border-2 border-violet-950 border-solid" />
-                    <img src="../img/iconeGato.png" alt="" class=" border-2 border-violet-950 border-solid" />
-                    <img src="../img/iconeHamister.png" alt="" class=" border-2 border-violet-950 border-solid" />
-                    <img src="../img/iconePassaro.png" alt="" class=" border-2 border-violet-950 border-solid" />
-                    <img src="../img/iconeTartaruga.png" alt="" class=" border-2 border-violet-950 border-solid" />
+                    <img src="../img/iconeCachorro.png" class=" border-2 border-violet-950 border-solid" />
+                    <img src="../img/iconeCobra.png" class=" border-2 border-violet-950 border-solid" />
+                    <img src="../img/iconeGato.png" class=" border-2 border-violet-950 border-solid" />
+                    <img src="../img/iconeHamister.png" class=" border-2 border-violet-950 border-solid" />
+                    <img src="../img/iconePassaro.png" class=" border-2 border-violet-950 border-solid" />
+                    <img src="../img/iconeTartaruga.png" class=" border-2 border-violet-950 border-solid" />
                 </div>
             </div>
 
@@ -143,9 +117,10 @@
 
             <!-- EDITAR PET -->
             <div id="editarPet" class="flex flex-col max-w-[600px] hidden">
-                <img src="../img/pet.png" alt="Animal Image" id="imgEditada" class="self-center max-w-full rounded-full w-[152px]"/>
+                <img src="../img/pet.png" alt="Animal Image" id="imgEditada"
+                    class="self-center max-w-full rounded-full w-[152px]" />
                 <input type="text" id="imgEditadaLink" placeholder="link imagem do pet">
-                <div class="mt-4 w-full p-5  bg-white rounded-xl">
+                <div class="mt-4 w-full p-5 bg-white rounded-xl">
                     <div class=" flex gap-5">
                         <div class="flex flex-col gap-5 my-auto w-52">
                             <div class="border-[#86A7FC] border-solid border-2 rounded-lg">
@@ -156,7 +131,6 @@
                             <div class="border-[#86A7FC] border-solid border-2 rounded-lg">
                                 <h2 class="font-extrabold">Porte</h2>
                                 <select name="porte" id="editarPorte">
-                                    <option value=""></option>
 
                                 </select>
                             </div>
@@ -164,7 +138,7 @@
 
                         <div class="flex flex-col items-center">
                             <div class=" bg-black border border-black border-solid h-[50px] w-1"></div>
-                            <img src="../img/pataPreta.png" alt="" class="self-center my-2  w-[21px]" />
+                            <img src="../img/pataPreta.png" class="self-center my-2w-[21px]" />
                             <div class="bg-black border border-black border-solid h-[50px] w-1"></div>
                         </div>
 
@@ -176,21 +150,18 @@
 
                             <div class="border-[#86A7FC] border-solid border-2 rounded-lg">
                                 <h2 class="font-extrabold">Raça</h2>
-                                <select name="raca" id="editarRaca">
-                                    <option value="0">SRD</option>
-                                </select>
+                                <select name="raca" id="editarRaca"></select>
                             </div>
                         </div>
                     </div>
-                    <div class="w-full flex items-center justify-center mt-4">
+                    <div class="w-full flex items-center justify-center mt-4 gap-4">
                         <button id="btn_confirmar"
                             class="border-violet-950 border-2 px-5 py-2 bg-[#86A7FC] rounded-xl font-semibold">Editar</button>
-                            <button id="btn_excluir"
-                                class="border-2 px-5 py-2 font-semibold text-center bg-red-500 rounded-xl border-solid border-red-950 text-white">Excluir</button>
+                        <button id="btn_excluir"
+                            class="border-2 px-5 py-2 font-semibold text-center bg-red-500 rounded-xl border-solid border-red-950 text-white">Excluir</button>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </main>
 </body>

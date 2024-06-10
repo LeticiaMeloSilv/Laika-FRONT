@@ -4,48 +4,65 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module">
+    import { getClienteNome, idUsuario, verificarUsuarioExistente,iniciarTelaCarregamento } from '../js/exports.js'
+    if(!idUsuario){
+      window.location.href = './login.html'
+    } else {
+      if(!verificarUsuarioExistente(idUsuario)){
+         window.location.href = './login.html'
+    }
+    }
+    document.addEventListener('DOMContentLoaded', async () => {
+      const telaCarregamento = document.createElement('div');
+      iniciarTelaCarregamento(telaCarregamento)
+      const nomeUsuario = await getClienteNome(idUsuario)
+    if(nomeUsuario){
+      telaCarregamento.classList.add('hidden')
+      document.getElementById('nomeUser').textContent=nomeUsuario
+    }
+  });
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Laika</title>
 </head>
 
 <body class="flex flex-col bg-[#FFDD95] gap-3">
-  <header class="flex flex-col items-center py-2 w-full bg-[#FFD274] ">
-    <div class="flex gap-5 justify-between w-full text-xl  text-zinc-700 px-10 text-opacity-80">
-      <div class="flex gap-5 items-start my-auto">
-        <img src="../img/logo.png" alt="Company Logo" class="shrink-0 aspect-[1.06] fill-slate-500 w-[68px]" />
-        <input type="text"
-          class="flex gap-5 self-stretch px-5 py-4 my-auto w-full text-xl bg-[#FFD274] border-[#86A7FC] border-solid border-[5px] rounded-[32px] text-zinc-700 text-opacity-80 "
-          placeholder="O que seu pet precisa?">
-        <img src="../img/search.png" alt="Botao Pesquisar" />
-      </div>
-      <img src="../img/usuario.png" alt="User Avatar" class="shrink-0 rounded-full aspect-[1.04] w-[74px]" />
+  <header class="bg-[#FFD274] relative h-32 flex items-center justify-center w-full">
+    <div class="w-[90%] flex justify-between">
+        <a href="./home.html">
+            <img class="w-16 h-16" src="../img/logo.png">
+        </a>
+        <div class="flex flex-row items-center justify-end w-1/5">
+            <div class="flex gap-10 hidden" id="login">
+                <a href="./login.html">Entrar</a>
+                <p> | </p>
+                <a href="./signUp.html">Cadastrar</a>
+            </div>
+                <img class="hidden cursor-pointer" id="userIcon">
+        </div>
     </div>
-    <hr class="self-stretch mt-4 w-full bg-black border border-black border-solid">
-    <nav class="flex gap-5 px-5 mt-3.5 text-2xl text-violet-900 w-[695px] ">
-      <a href="./agendamento_servicos.html" class="flex-auto">Agendar serviços</a>
-      <a href="#" class="flex-auto">Veterinário</a>
-      <a href="#" class="flex-auto">Produtos</a>
-    </nav>
-  </header>
-  <main class="flex items-center justify-center flex-row w-full gap-10 ">
-    <aside
-      class="gap-3 flex flex-col items-center self-stretch px-14 py-9 w-2/6 text-3xl text-center bg-[#FFD274] text-zinc-900">
-      <p class="font-extrabold">Nome do cliente</p>
-      <hr class=" self-stretch bg-[#86A7FC] border-[#86A7FC] border-solid border-2">
-      <a href="./pedidos.html" class="mt-5 border-b-[#86A7FC] border-b-solid border-b-4 self-stretch">Meus pedidos</a>
-      <a href="./perfil.html" class="">Dados da conta</a>
-      <a href="./pets.html" class="">Meus Pets</a>
-      <a href="./agendamento.html" class="self-stretch">Seus agendamentos</a>
-      <a href="../index.html" class="mt-16 font-extrabold">VOLTAR</a>
-    </aside>
-    <div class="flex flex-col">
-      <div class="flex flex-col">
-        <div class="flex items-center justify-center pb-3">
+    <hr class="border-2 border-[#2A00A8] w-full absolute bottom-0">
+</header>
+<main class="flex items-center justify-between flex-row w-full gap-10 h-[40rem] px-40">
+  <aside class="gap-3 flex flex-col justify-between items-center self-stretch px-14 py-9 w-2/6 text-3xl text-center bg-[#FFD274] text-zinc-900">
+      <div class="w-full">
+          <p class="font-extrabold h-10" id="nomeUser"></p>
+          <hr class=" self-stretch bg-[#86A7FC] border-[#86A7FC] border-solid border-2">
+      </div>
+      <div class="w-full flex flex-col gap-10 items-center">
+          <a href="./pedidos.html" class="border-b-[#86A7FC] w-fit border-b-solid border-b-4">Meus pedidos</a>
+          <a href="./perfil.html" class="border-b-4 border-transparent">Dados da conta</a>
+          <a href="./pets.html"  class='border-b-4 border-transparent'>Meus Pets</a>
+          <a href="./agendamento.html" class="border-b-4 border-transparent">Seus agendamentos</a>
+      </div>
+      <a href="./home.html" class="mt-16 font-extrabold">VOLTAR</a>
+  </aside>
+    <div class="flex flex-col items-center">
+      <div class="flex flex-col items-center">
           <h1 class="text-3xl font-extrabold text-zinc-900 border-b-[#86A7FC] border-b-solid border-b-[5px]">
               Meus Pedidos
           </h1>
-          <img src="../img/editar.png" class=" hidden">
-      </div>
         <nav
           class="flex gap-5 items-center justify-center px-8 mt-8 text-xl font-extrabold text-center bg-[#FFD274] rounded-3xl text-zinc-900">
           <button class="">Em andamento</button>
@@ -55,7 +72,7 @@
           <button class="">Cancelados</button>
         </nav>
       </div>
-      <h1 class="text-5xl w-96">Parece que essa função ainda não está completa, perdão pelo imprevisto</h1>
+      <h1 class="text-5xl">Função em andamento</h1>
       <div class="grid gap-5 overflow-y-auto scroll-snap-type-y-mandatory h-80 grid-cols-3">
         <!-- <div class="flex flex-col w-52 px-4 pt-1.5 pb-3.5 bg-white rounded-xl">
           <img src="../img/produto.png" alt="Produto" class="self-center" />
@@ -128,7 +145,6 @@
         </div>
 
  -->
-
       </div>
     </div>
 

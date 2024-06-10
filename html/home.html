@@ -5,145 +5,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../js/home.js" type="module"></script>
+    <script src="../js/usuarioExistente.js" type="module"></script>
 
-    <title>Document</title>
+    <title>Home</title>
 </head>
 
 <body class="h-full w-full bg-[#FFDD95]">
-    <header class="bg-[#FFD274] h-32 fixed w-full gap-5 z-10">
-        <div class=" flex flex-row items-center justify-around p-3">
-            <a href="../index.html"><img class="w-16 h-16" src="../img/logo.png" alt=""></a>
-            <div class="w-3/5 flex justify-center">
-                <input type="search"
-                    class="p-2 rounded-full border-2 border-[#86A7FC] bg-lupa bg-no-repeat bg-[#FFDD95] w-4/5"
-                    id="navegar" placeholder="O que seu pet precisa?" />
-            </div>
-            <div class="flex flex-row items-center justify-between w-1/5">
-                <a href="./login.html">Entrar</a>
-                <p> | </p>
-                <a href="./signUp.html">Cadastrar</a>
-                <img src="../img/usuario.png" alt="">
+    <header class="bg-[#FFD274] flex flex-col items-center pt-4">
+        <div class=" flex justify-between w-[90%]">
+            <a href="./home.html">
+                <img class="w-16 h-16" src="../img/logo.png">
+            </a>
+            <div class="flex flex-row items-center justify-end w-1/5">
+                <div class="flex gap-10 hidden" id="login">
+                    <a href="./login.html">Entrar</a>
+                    <p> | </p>
+                    <a href="./signUp.html">Cadastrar</a>
+                </div>
+                <img class="hidden cursor-pointer" id="userIcon">
             </div>
         </div>
-        <nav class="bg-[#FFD274] flex justify-evenly items-center pt-5">
-            <a class="text-[#2A00A8]" href="../">Agendar serviços</a>
-            <a class="text-[#2A00A8]" href="../">Veterinario</a>
-            <a class="text-[#2A00A8]" href="./">Produtos</a>
-        </nav>
-        <hr class="border-2 border-[#2A00A8]">
-    </header>
-    <main class="pt-36">
-
-        <nav class="p-5 flex gap-3 bg-[#FFDD95]">
-            <button class="bg-[#86A7FC] h-20 flex items-center rounded-2xl w-64 justify-evenly">
-                <img src="../img/banho (1) 1.png" alt="">
-                <p>Últimos serviços</p>
-            </button>
-            <button class="bg-[#86A7FC] flex h-20 items-center rounded-2xl w-64 justify-evenly">
-                <img src="../img/ecg_heart.png" alt="">
-                <p>Veterinários mais bem avaliados</p>
-            </button>
-            <button class="bg-[#86A7FC] h-20 flex items-center rounded-2xl w-64 justify-evenly">
+        <nav class="px-[10%] my-10 w-full flex gap-[10%] justify-evenly">
+            <button id="goToProdutos"
+                class="bg-[#86A7FC] duration-300 hover:bg-[#3468C0] h-20 flex items-center rounded-2xl w-1/3 justify-around p-8">
                 <img src="../img/storefront.png" alt="">
-                <p>Produtos populares</p>
+                <p class="text-white text-4xl">Produtos</p>
             </button>
+            <button id="goToServicos"
+                class="bg-[#86A7FC] duration-300 hover:bg-[#3468C0] h-20 flex items-center rounded-2xl w-1/3 justify-around p-8">
+                <img src="../img/banho (1) 1.png" alt="">
+                <p class="text-white text-4xl">Serviços</p>
+            </button>
+            <button id="goToFuncionarios"
+                class="bg-[#86A7FC] duration-300 hover:bg-[#3468C0] flex h-20 items-center rounded-2xl w-1/3 justify-around p-8">
+                <img src="../img/ecg_heart.png" alt="">
+                <p class="text-white text-4xl">Funcionários</p>
+            </button>
+
         </nav>
-        <div class="flex items-center justify-center w-screen gap-5">
-            <img class="self-center" src="../img/seta.png" alt="">
-            <div class="bg-branco w-1/2 h-80">
-                <!--cheio de imgs pra um slide -->
+        <hr class="border-2 border-[#2A00A8] w-full">
+    </header>
+    <main>
+        <div id="produtosField" class="my-10 flex justify-center items-center relative">
+            <div class="flex flex-col items-center relative w-3/5 px-20">
+                <h1 class="text-2xl text-[#2A00A8] p-5 self-start font-bold">Nossos Produtos</h1>
+                <div class="w-full flex gap-10" id="containerProdutos"></div>
+
+                <div class="bg-[#86A7FC] absolute w-full mx-4 -bottom-10 rounded-3xl h-20 -z-10"></div>
             </div>
-            <img class="rotate-180 self-center" src="../img/seta.png" alt="">
-        </div>
-        <h1 class="text-2xl text-[#2A00A8] p-5">Produtos mais Populares</h1>
-        <div class=" flex gap-3 relative justify-center items-center">
-            <div class="bg-branco w-48 h-70 rounded-xl flex flex-col items-center p-4">
-                <div class="flex self-start">
-                    <h2 class="">4,5</h2>
-                    <img class="self-start" src="../img/estrela.png" alt="">
-                </div>
-                <img src="../img/produto.png" alt="" class="">
-                <h2>Ração para sabiá 5kg - Nativos</h2>
-                <div class="self-start">
-                    <h2 class="text-[#2A00A8] font-medium">R$145,99</h2>
-                </div>
-                <button
-                    class="bg-[#86A7FC] border-[#2A00A8] border-1 rounded-md p-2 text-[#2A00A8]">Adicionar</button>
-            </div>
-
-
-
-            <div class="bg-branco w-48 h-70 rounded-xl flex flex-col items-center p-4">
-                <div class="flex self-start">
-                    <h2 class="">4,5</h2>
-                    <img class="self-start" src="../img/estrela.png" alt="">
-                </div>
-                <img src="../img/produto.png" alt="" class="">
-                <h2>Ração para sabiá 5kg - Nativos</h2>
-                <div class="self-start">
-                    <h2 class="text-[#2A00A8] font-medium">R$145,99</h2>
-                </div>
-                <button
-                    class="bg-[#86A7FC] border-[#2A00A8] border-1 rounded-md p-2 text-[#2A00A8]">Adicionar</button>
-            </div>
-
-
-
-
-            <div class="bg-branco w-48 h-70 rounded-xl flex flex-col items-center p-4">
-                <div class="flex self-start">
-                    <h2 class="">4,5</h2>
-                    <img class="self-start" src="../img/estrela.png" alt="">
-                </div>
-                <img src="../img/produto.png" alt="" class="">
-                <h2>Ração para sabiá 5kg - Nativos</h2>
-                <div class="self-start">
-                    <h2 class="text-[#2A00A8] font-medium">R$145,99</h2>
-                </div>
-                <button
-                    class="bg-[#86A7FC] border-[#2A00A8] border-1 rounded-md p-2 text-[#2A00A8]">Adicionar</button>
-            </div>
-
-
-            <div class="bg-branco w-48 h-70 rounded-xl flex flex-col items-center p-4">
-                <div class="flex self-start">
-                    <h2 class="">4,5</h2>
-                    <img class="self-start" src="../img/estrela.png" alt="">
-                </div>
-                <img src="../img/produto.png" alt="" class="">
-                <h2>Ração para sabiá 5kg - Nativos</h2>
-                <div class="self-start">
-                    <h2 class="text-[#2A00A8] font-medium">R$145,99</h2>
-                </div>
-                <button
-                    class="bg-[#86A7FC] border-[#2A00A8] border-1 rounded-md p-2 text-[#2A00A8]">Adicionar</button>
-            </div>
-
-            <div class="bg-[#86A7FC] absolute w-full -bottom-5 h-10 -z-10"></div>
+            <a href="./produtos.html" class="absolute right-40 bg-white h-20 flex items-center p-5 rounded-3xl">
+                <p class="text-3xl">Ver mais</p>
+                <img src="../img/right-arrow.png" class="h-full">
+            </a>
         </div>
 
+        <div id="servicosField" class="my-40 pt-16 w-full">
+            <img class="w-full -z-10" src="../img/waveTop.png">
+            <div class="bg-[#86A7FC] flex flex-col items-center">
+                <h1 class="text-2xl text-[#2A00A8] p-5 font-extrabold text-4xl">Podemos cuidar do seu pet para você!
+                </h1>
+                <div id="containerServicos"
+                    class="flex items-center w-full justify-center h-96 px-[10%] gap-[10%] my-10"></div>
+            </div>
+            <img class="w-full -z-10" src="../img/waveBottom.png">
+        </div>
 
-        <div class="pt-16 w-full">
-            <img class="w-full absolute -z-10 " src="../img/wave.png" alt="">
-            <div class=" top-28">Podemos cuidar do seu Pet para voce!</div>
-            <div class="bg-[#86A7FC] flex items-center justify-center">
-                <div class="bg-branco w-60 flex  items-center justify-center flex-col rounded-xl">
-                    <div class="flex  items-center justify-center">
-                        <h1 class="font-bold text-[#2A00A8]">Hospedagem</h1>
-                        <img src="../img/travesseiro.png" alt="">
-                    </div>
-                    <h2 class="font-semibold">Para passar uma noite ou mais</h2>
-                    <h4>Vai sair à noite? Você pode deixar seu pet conosco, enquanto damos entreterimento para seu pet
-                        se divertir!</h4>
-                    <button
-                        class="bg-[#86A7FC] border-[#2A00A8] border-1 rounded-md p-2 text-[#2A00A8]">Adicionar</button>
+        <div id="funcionariosField" class="my-40 pt-16 w-full">
+            <div class="bg-[#86A7FC] flex flex-col items-center">
+                <h1 class="text-2xl text-[#2A00A8] p-5 font-extrabold text-4xl">Conheça a nossa equipe!</h1>
+                <div id="containerFuncionarios" class="grid grid-cols-4 w-full justify-center px-[10%] gap-[2%] my-10">
                 </div>
             </div>
-
         </div>
 
 
     </main>
+
+    <footer class="h-[30vh] bg-black flex items-center justify-between px-10">
+        <div class="text-white">
+            <h3 class="text-3xl">Projeto realizado por:</h3>
+            <p>Matheus Noronha da Silva</p>
+            <p>Letícia Melo Silva</p>
+            <p>Pedro Henrique Inocente</p>
+            <p>Rubens Luiz Lobo de Almeida</p>
+        </div>
+        <div class="h-2/3 flex">
+            <img src="../img/pedigree-logo-6.png" class="h-full">
+            <img src="../img/altoEmGambiarra.png" class="h-full">
+        </div>
+    </footer>
+    <img src="https://imgur.com/a/PvkU4dN" alt="">
 </body>
 
 </html>
+
+<style>
+</style>
