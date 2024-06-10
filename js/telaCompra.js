@@ -23,14 +23,15 @@ if(!idProduto){
      }
      btn_comprar.addEventListener('click', ()=>{
         const quantidadeCompra=document.getElementById('quantidadeCompra').value
-        console.log('oi9');
-        const confirmado=confirm(`Deseja comprar ${quantidadeCompra} unidades do produto ${nome}?`)
-        if (confirmado) {
+        
             const fundoGeral=document.getElementById('fundoComprarProduto')
             fundoGeral.classList.add('absolute','top-0', 'left-0', 'w-full', 'h-full', 'bg-black','bg-opacity-40','flex', 'items-center','justify-center')
             const fecharContainer=document.createElement('img')
             fecharContainer.src='../img/Add.png'
-fecharContainer.classList.add('self-start','rotate-45')
+fecharContainer.classList.add('self-start','rotate-45', 'cursor-pointer')
+fecharContainer.addEventListener('click', ()=>{
+    fundoGeral.classList.add('hidden')
+})
             const fundo=document.createElement('div')
             fundo.classList.add('bg-white','w-[50%]','h-[50%]','flex','items-center','flex-col')
             const pNome=document.createElement('p')
@@ -89,10 +90,6 @@ fecharContainer.classList.add('self-start','rotate-45')
                 }
                 
             })
-
-        } else {
-            alert('Compra cancelada')
-        }
     })
 }
 
