@@ -287,9 +287,9 @@ editar.addEventListener('click', async ()=>{
 
 const btn_excluir = document.getElementById('btn_excluir')
 btn_excluir.addEventListener('click', async function () {
-  var confirmado = confirm(`Deseja deletar pet ${nome.value}?`);
+  const confirmado = confirm(`Deseja deletar pet ${nome.value}?`);
   if (confirmado) {
-    var certezaDeConfirmacao = confirm(`Tem certeza de que deseja deletar o pet ${nome.value}? essa alteração é irreversivel`);
+    const certezaDeConfirmacao = confirm(`Tem certeza de que deseja deletar o pet ${nome.value}? essa alteração é irreversivel`);
     if (certezaDeConfirmacao) {
       deleteAnimal(idBixo)
       window.location.reload();

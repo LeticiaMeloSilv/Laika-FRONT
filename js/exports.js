@@ -32,6 +32,22 @@ export async function getProduto(id) {
     const data= await response.json()
     return data.dados
 }
+
+export async function putProduto(produto,id) {
+    const link=`${url}/${versao}/laika/produto/${id}`
+    console.log(link);
+    const options={
+        method:`PUT`,
+        headers:{
+            'Content-type':'application/json'
+        },
+        body:JSON.stringify(produto)
+    }
+    console.log(options);
+    const response=await fetch(link,options)
+    console.log(response);
+    return response.ok
+}
 // ----------------------------------------------------CLIENTES----------------------------------------------------
 export async function getClientes() {
     const link = `${url}/${versao}/laika/clientes`
@@ -95,6 +111,7 @@ export async function getFuncionarioId(id) {
     const listFuncionarios = await funcionariosApi.json();
     return listFuncionarios.dados;
 }
+
 // ----------------------------------------------------CARGO----------------------------------------------------
 export async function getCargos() {
     const link = `${url}/${versao}/laika/cargos`;
