@@ -10,8 +10,6 @@ if (!idUsuario) {
     }
 }
 
-const checkboxSelecionada = new URLSearchParams(window.location.search).get('id');
-
 let listaServicos
 let cliente
 let employees
@@ -38,9 +36,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           input.setAttribute('type','checkbox')
           input.classList.add('h-1/2','w-1/6')
           input.value = element.id
-          if(element.id == checkboxSelecionada){
-            input.checked = true
-          }
           const nome = document.createElement('span')
           nome.classList.add('text-xl')
           nome.textContent = element.nome

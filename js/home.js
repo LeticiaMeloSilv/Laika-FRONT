@@ -81,7 +81,7 @@ function executarSite(){
         const info = dados.dados
         const icone = dados.img
         const card = document.createElement('div')
-        card.classList.add('bg-white', 'w-1/3', 'flex', 'items-center', 'flex-col', 'rounded-xl', 'h-full', 'justify-between', 'p-4')
+        card.classList.add('bg-white', 'w-1/3', 'flex', 'items-center', 'flex-col', 'rounded-xl', 'h-full', 'justify-evenly', 'p-4')
 
         card.style.border = '3px'
         card.style.borderStyle = 'solid';
@@ -96,17 +96,9 @@ function executarSite(){
         const sinopse =document.createElement('h4')
         sinopse.textContent = info.descricao
         sinopse.classList.add('text-center')
-        const botao = document.createElement('button')
-        botao.textContent = "Contratar serviço"
-        botao.style.border = '3px'
-        botao.style.borderStyle = 'solid';
-        botao.classList.add('bg-[#CFD4E5]', 'hover:bg-[#a5a9b4]', 'duration-300', 'rounded-md', 'text-[#2A00A8]', 'text-2xl', 'hover:text-[#3800ee]', 'p-4')
-        botao.addEventListener('click',()=>{
-            window.location.href='./telaAgendamento.html?id='+info.id
-        })
     
         top.replaceChildren(nome,img)
-        card.replaceChildren(top,sinopse,botao)
+        card.replaceChildren(top,sinopse)
         document.getElementById('containerServicos').appendChild(card)
     
     }
