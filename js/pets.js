@@ -175,9 +175,11 @@ async function executarSite(){
         card.replaceChildren(iconeAnimal, ImagemAnimal, nomeAnimal, racaAnimal, linha, divIdadePeso)
         telaNormal.appendChild(card)
     }
+if(listaPets){
         listaPets.forEach(dado => {
             criarCard(dado)
         });
+}
     
     async function abrirCardAnimal(animalAntigo) {
         telaEditar.classList.remove('hidden')
