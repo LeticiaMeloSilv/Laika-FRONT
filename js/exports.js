@@ -1,6 +1,6 @@
-const url = `https://laika-back.onrender.com`
+// const url = `https://laika-back.onrender.com`
 const versao = "v1"
-// const url = `http://localhost:8080`
+const url = `http://localhost:8080`
 
 export async function getProdutos(filtro) {
     // const link = `${url}/${versao}/laika/produtos`
@@ -211,7 +211,7 @@ export async function getAnimaisCliente(id){
     const link =`${url}/${versao}/laika/animais/cliente/${id}`
     const response = await fetch(link);
     const dados = await response.json();
-    return dados.dados;
+    return dados;
 }
 
 export async function postAnimal(animal) {

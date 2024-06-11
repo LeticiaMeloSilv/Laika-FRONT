@@ -27,56 +27,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   });
 
   function executarSite() {
-      async function makeSelectSevicos(){
-      listaServicos.forEach(element => {
-          const servicoCheck = document.createElement('div')
-          servicoCheck.id='divCheckbox'
-          servicoCheck.classList.add('w-full','space-x-2','flex','justify-center','items-center','flex','flex-row','p-0')
-          const input = document.createElement('input')
-          input.setAttribute('type','checkbox')
-          input.classList.add('h-1/2','w-1/6')
-          input.value = element.id
-          const nome = document.createElement('span')
-          nome.classList.add('text-xl')
-          nome.textContent = element.nome
-          servicoCheck.replaceChildren(input,nome)
-          document.getElementById('servicos').appendChild(servicoCheck)
-      });
-      
-      }
-      
-      async function makeSelectAnimals(){
-          const listaAnimais=cliente.animais
-          listaAnimais.forEach(animal => {
-      
-              const animalOpção = document.createElement('option')
-              animalOpção.textContent = animal.nome
-              animalOpção.value = animal.id
-      
-              let select = document.getElementById('petSelect')
-              select.appendChild(animalOpção)
-              select.addEventListener('focusout',getDataAnimalSelected)
-              });
-              
-      }
-      
-      // async function makeSelectFuncionarios(){
-       
-      //     const funcionarios = await getFuncionarios()
-      //     funcionarios.forEach(funcionario => {
-      
-      //         const funcionarioOpção = document.createElement('option')
-      //         funcionarioOpção.textContent = funcionario.nome
-      //         funcionarioOpção.value = funcionario.id
-      
-      //         let select = document.getElementById('petSelect')
-      //         select.appendChild(funcionarioOpção)
-      //         // select.addEventListener('focusout',getDatafuncionarioSelected)
-      //         });
-              
-      // }
-      // makeSelectFuncionarios()
-        
       const dropdown = document.getElementById('dropdown');
               const dropdownContent = document.querySelector('.dropdown-content');
               const selectedEmployeesContainer = document.querySelector('.selected-employees');
@@ -129,7 +79,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                   } else {
                       selectedEmployeesContainer.removeChild(existingSelectedEmployee);
                   }
-                 
               }
       
               window.addEventListener('click', (event) => {
@@ -139,21 +88,9 @@ document.addEventListener('DOMContentLoaded', async () => {
               });
       
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
       async function getDataAnimalSelected() {
-          
           let select = document.getElementById("petSelect");
-      
           let selectedValue = select.options[select.selectedIndex].value;
-      
           await makeAnimalSelected(selectedValue)
       }
       
@@ -166,19 +103,38 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
       
       
+        listaServicos.forEach(element => {
+            const servicoCheck = document.createElement('div')
+            servicoCheck.id='divCheckbox'
+            servicoCheck.classList.add('w-full','space-x-2','flex','justify-center','items-center','flex','flex-row','p-0')
+            const input = document.createElement('input')
+            input.setAttribute('type','checkbox')
+            input.classList.add('h-1/2','w-1/6')
+            input.value = element.id
+            const nome = document.createElement('span')
+            nome.classList.add('text-xl')
+            nome.textContent = element.nome
+            servicoCheck.replaceChildren(input,nome)
+            document.getElementById('servicos').appendChild(servicoCheck)
+        });
+        
+        if(cliente.animais){
+            const listaAnimais=cliente.animais
+            listaAnimais.forEach(animal => {
+    
+              const animalOpção = document.createElement('option')
+              animalOpção.textContent = animal.nome
+              animalOpção.value = animal.id
       
-      // function toggleSelectPet() {
-      //     let select = document.getElementById("petSelect");
-      //     if (select.classList.contains("hidden")) {
-      //         select.classList.remove("hidden");
-      //     } else {
-      //         select.classList.add("hidden");
-      //     }
-      // }
-      
-      makeSelectSevicos()
-      makeSelectAnimals()
-      
+              let select = document.getElementById('petSelect')
+              select.appendChild(animalOpção)
+              select.addEventListener('focusout',getDataAnimalSelected)
+              });
+              
+      } else {
+        alert("Você não tem animais cadastrados, logo, não dá realizar um agendamento")
+        window.location.href='./home.html'
+      }
       
       const dataAgendamento=document.getElementById('dataAgendamento')
       dataAgendamento.addEventListener('focusout',verificarDiaAgendamento)

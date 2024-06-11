@@ -175,8 +175,9 @@ async function executarSite(){
         card.replaceChildren(iconeAnimal, ImagemAnimal, nomeAnimal, racaAnimal, linha, divIdadePeso)
         telaNormal.appendChild(card)
     }
-if(listaPets){
-        listaPets.forEach(dado => {
+if(listaPets.dados){
+    const lista = listaPets.dados
+        lista.forEach(dado => {
             criarCard(dado)
         });
 }

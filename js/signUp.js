@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 document.getElementById('telaInfo1').classList.add('hidden')
                 document.getElementById('telaInfo2').classList.remove('hidden')
 
-                document.getElementById('criarConta2').addEventListener('click', function(){
+                document.getElementById('criarConta2').addEventListener('click', async function(){
                     const rua = document.getElementById('rua').value
                     const cidade = document.getElementById('cidade').value
                     const estado = document.getElementById('estado').value
@@ -134,8 +134,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 numero: numero
                             }
                         }
-                        console.log(novoClienteJSON);
-                        postCliente(novoClienteJSON)
+                        const result = await postCliente(novoClienteJSON)
+                        if(result){
+                            window.location.href='./login.html'
+                        } else {
+                            alert("Ocorreu um erro ao criar a sua conta")
+                        }
                     }
                 })
             }

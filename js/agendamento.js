@@ -43,7 +43,9 @@ async function executarSite() {
         const dayElement = document.createElement('div');
         dayElement.className = 'calendar-day rounded-lg bg-gray-200';
         if (day == dd) {
-            dayElement.className = 'calendar-day rounded-lg bg-red-500';
+            dayElement.className = 'calendar-day rounded-lg bg-gray-500';
+            dayElement.style.color='white';
+
         }
         dayElement.innerHTML = day;
         calendar.appendChild(dayElement);
