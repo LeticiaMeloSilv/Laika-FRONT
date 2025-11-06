@@ -1,6 +1,6 @@
 
 'use strict'
-import { deleteAgendamento, idUsuario, getAgendamentosCliente, iniciarTelaCarregamento, verificarUsuarioExistente, getClienteNome } from './exports.js'
+import { deleteAgendamento, idUsuario, getAgendamentosCliente, iniciarTelaCarregamento, verificarUsuarioExistente, getClienteNome, mostrarToast } from './exports.js'
 
 if (!idUsuario) {
     window.location.href = './login.html'
@@ -18,8 +18,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         telaCarregamento.classList.add('hidden')
         executarSite()
     } else {
-        alert("Você não possui agendamentos :(")
+        mostrarToast('Você não possui agendamentos :(', 'error')    
         window.history.back()
+        telaCarregamento.classList.add('hidden')
     }
 });
 async function executarSite() {

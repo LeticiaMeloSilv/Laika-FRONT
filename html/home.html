@@ -12,20 +12,8 @@
 </head>
 
 <body class="h-full w-full bg-[#FFDD95]">
-    <header class="bg-[#FFD274] flex flex-col items-center pt-4">
-        <div class=" flex justify-between w-[90%]">
-            <a href="./home.html">
-                <img class="w-16 h-16" src="../img/logo.png">
-            </a>
-            <div class="flex flex-row items-center justify-end w-1/5">
-                <div class="flex gap-10 hidden" id="login">
-                    <a href="./login.html">Entrar</a>
-                    <p> | </p>
-                    <a href="./signUp.html">Cadastrar</a>
-                </div>
-                <img class="hidden cursor-pointer" id="userIcon">
-            </div>
-        </div>
+    <div id="header-container"></div>
+    
         <nav class="px-[10%] my-10 w-full flex gap-[10%] justify-evenly">
             <button id="goToProdutos"
                 class="bg-[#86A7FC] duration-300 hover:bg-[#3468C0] h-20 flex items-center rounded-2xl w-1/3 justify-around p-8">
@@ -44,9 +32,7 @@
             </button>
         </nav>
 
-
         <hr class="border-2 border-[#2A00A8] w-full">
-    </header>
     <main>
         <div id="produtosField" class="my-10 flex justify-center items-center relative">
             <div class="flex flex-col items-center relative w-3/5 px-20">
@@ -102,8 +88,12 @@
     </footer>
     <img src="https://imgur.com/a/PvkU4dN" alt="">
 </body>
-
+<script>
+    fetch('../componentes/header.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('header-container').innerHTML = html;
+        })
+        .catch(error => console.error('Erro ao carregar header:', error));
+</script>
 </html>
-
-<style>
-</style>

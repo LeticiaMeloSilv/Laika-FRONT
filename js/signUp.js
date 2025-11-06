@@ -1,5 +1,5 @@
 'use strict'
-import { getClientesLogin,iniciarTelaCarregamento,postCliente} from './exports.js'
+import { getClientesLogin,iniciarTelaCarregamento,postCliente, mostrarToast} from './exports.js'
 let infoClientes
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -7,6 +7,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     iniciarTelaCarregamento(telaCarregamento)
     infoClientes = await getClientesLogin()
     if(infoClientes){
+        telaCarregamento.classList.add('hidden')
+    }
+    else{
+        mostrarToast('Ocorreu um erro no processamento, tente novamente mais tarde', 'error')
+        window.history.back()
         telaCarregamento.classList.add('hidden')
     }
   });

@@ -1,5 +1,4 @@
-import { getFuncionario, getProdutos, getServico, iniciarTelaCarregamento} from './exports.js'
-
+import { getFuncionario, getProdutos, getServico, iniciarTelaCarregamento, mostrarToast} from './exports.js'
 //TELA DE CARREGAMENTO. AGUARDA A REQUISIÇÃO DO BANCO DE DADOS SER CONCLUÍDA
 
 
@@ -27,6 +26,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     if(produtos && hospedagem && babySitter && creche && f1 && f2 && f3 && f4){
         telaCarregamento.classList.add('hidden')
         executarSite()
+    }
+    else{
+        mostrarToast('Ocorreu um erro no processamento, tente novamente mais tarde', 'error')
+        window.history.back()
+        telaCarregamento.classList.add('hidden')
     }
 });
 

@@ -546,3 +546,30 @@ export async function iniciarTelaCarregamento(telaCarregamento){
     `
     document.body.append(telaCarregamento);
 }
+export function mostrarToast(mensagem, tipo = 'sucesso') {
+    const cores = {
+        sucesso: { bg: 'bg-green-500', icon: '✓' },
+        erro: { bg: 'bg-red-500', icon: '✕' },
+        aviso: { bg: 'bg-yellow-500', icon: '⚠' },
+        info: { bg: 'bg-blue-500', icon: 'ℹ' }
+    }
+    
+    const config = cores[tipo] || cores.info
+    
+    const toast = document.createElement('div')
+    toast.className = `fixed top-4 right-4 ${config.bg} text-white px-6 py-4 rounded-lg shadow-lg z-50 flex items-center gap-3 transform transition-all duration-300 translate-x-full`
+    
+    toast.innerHTML = `
+        <span class="font-bold">${config.icon}</span>
+        <span>${mensagem}</span>
+        <button onclick="this.parentElement.remove()" class="ml-4 text-white hover:text-gray-200">✕</button>
+    `
+    
+    document.body.appendChild(toast)
+    
+    setTimeout(() => toast.classList.remove('translate-x-full'), 10)
+    setTimeout(() => {
+        toast.classList.add('translate-x-full')
+        setTimeout(() => toast.remove(), 300)
+    }, 3000)
+}

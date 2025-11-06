@@ -1,4 +1,4 @@
-import { deleteAnimal, postAnimal, putAnimal, getTipos, getPortes, idUsuario, verificarUsuarioExistente, iniciarTelaCarregamento, getAnimaisCliente, getRacas, getClienteNome} from './exports.js'
+import { deleteAnimal, postAnimal, putAnimal, getTipos, getPortes, idUsuario, verificarUsuarioExistente, iniciarTelaCarregamento, getAnimaisCliente, getRacas, getClienteNome, mostrarToast} from './exports.js'
 
 'use strict'
 
@@ -30,6 +30,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     if(listaPets && listaTipos && listaRacas && listaPortes){
         telaCarregamento.classList.add('hidden')
         executarSite()
+    }
+    else{
+        mostrarToast('Ocorreu um erro no processamento, tente novamente mais tarde', 'error')
+        window.history.back()
+        telaCarregamento.classList.add('hidden')
     }
   });
 

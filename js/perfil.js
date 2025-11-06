@@ -1,4 +1,4 @@
-import { getClienteResumo, idUsuario, iniciarTelaCarregamento, putCliente, verificarUsuarioExistente} from './exports.js'
+import { getClienteResumo, idUsuario, iniciarTelaCarregamento, putCliente, verificarUsuarioExistente, mostrarToast} from './exports.js'
 
 'use strict'
 
@@ -16,6 +16,11 @@ document.addEventListener('DOMContentLoaded', async () => {
   perfilAntigo = await getClienteResumo(idUsuario)
   if(perfilAntigo){
       telaCarregamento.classList.add('hidden')
+  }
+  else{
+    mostrarToast('Ocorreu um erro no processamento, tente novamente mais tarde', 'error')
+    window.history.back()
+    telaCarregamento.classList.add('hidden')
   }
   executarSite()
 });

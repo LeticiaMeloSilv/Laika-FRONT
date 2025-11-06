@@ -3,27 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Laika</title>
     <script src="../js/telaAgendamento.js" defer type="module"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="h-screen w-screen flex flex-col overflow-hidden">
-    <header class="bg-[#FFD274] relative h-32 flex items-center justify-center w-full">
-        <div class="w-[90%] flex justify-between">
-            <a href="./home.html">
-                <img class="w-16 h-16" src="../img/logo.png">
-            </a>
-            <div class="flex flex-row items-center justify-end w-1/5">
-                <div class="flex gap-10 hidden" id="login">
-                    <a href="./login.html">Entrar</a>
-                    <p> | </p>
-                    <a href="./signUp.html">Cadastrar</a>
-                </div>
-                    <img class="hidden cursor-pointer" id="userIcon">
-            </div>
-        </div>
-        <hr class="border-2 border-[#2A00A8] w-full absolute bottom-0">
-    </header>
+    <div id="header-container"></div>
     <main class="flex-grow flex flex-row items-center justify-around">
         <div class="tela mb-16 w-2/6 h-1/2 flex rounded-xl flex-col p-6 text-center space-y-12 items-center">
             <div class="w-full flex flex-col space-y-4 items-center">
@@ -168,6 +153,14 @@
         </div>
     </main>
 </body>
+<script>
+    fetch('../componentes/header.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('header-container').innerHTML = html;
+        })
+        .catch(error => console.error('Erro ao carregar header:', error));
+</script>
 </html>
 
 <style>

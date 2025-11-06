@@ -1,5 +1,5 @@
 'use strict'
-import {getCliente,getFuncionarios,getAnimal,postAgendamento,getServicos, iniciarTelaCarregamento, verificarUsuarioExistente, idUsuario} from './exports.js'
+import {getCliente,getFuncionarios,getAnimal,postAgendamento,getServicos, iniciarTelaCarregamento, verificarUsuarioExistente, idUsuario, mostrarToast} from './exports.js'
 
 
 if (!idUsuario) {
@@ -23,6 +23,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     if(listaServicos && cliente && employees){
         telaCarregamento.classList.add('hidden')
         executarSite()
+    }
+    else{
+        mostrarToast('Ocorreu um erro no processamento, tente novamente mais tarde', 'error')
+        window.history.back()
+        telaCarregamento.classList.add('hidden')
     }
   });
 

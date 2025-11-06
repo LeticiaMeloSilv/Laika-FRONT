@@ -1,4 +1,4 @@
-import {putProduto, getProduto, iniciarTelaCarregamento} from './exports.js'
+import {putProduto, getProduto, iniciarTelaCarregamento, mostrarToast} from './exports.js'
 
 const idProduto = new URLSearchParams(window.location.search).get('id');
 if(!idProduto){
@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     if(info){
         telaCarregamento.classList.add('hidden')
         executarSite()
+    }
+    else{
+        mostrarToast('Ocorreu um erro no processamento, tente novamente mais tarde', 'error')
+        window.history.back()
+        telaCarregamento.classList.add('hidden')
     }
   });
 function executarSite(){

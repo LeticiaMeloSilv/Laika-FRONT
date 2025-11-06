@@ -10,22 +10,7 @@
 </head>
 
 <body class="flex flex-col bg-[#FFDD95] gap-3">
-    <header class="bg-[#FFD274] relative h-32 flex items-center justify-center w-full">
-        <div class="w-[90%] flex justify-between">
-            <a href="./home.html">
-                <img class="w-16 h-16" src="../img/logo.png">
-            </a>
-            <div class="flex flex-row items-center justify-end w-1/5">
-                <div class="flex gap-10 hidden" id="login">
-                    <a href="./login.html">Entrar</a>
-                    <p> | </p>
-                    <a href="./signUp.html">Cadastrar</a>
-                </div>
-                <img class="hidden cursor-pointer" id="userIcon">
-            </div>
-        </div>
-        <hr class="border-2 border-[#2A00A8] w-full absolute bottom-0">
-    </header>
+    <div id="header-container"></div>
     <main class="flex items-center justify-between flex-row w-full gap-10 h-[40rem] px-40">
         <aside class="gap-3 flex flex-col justify-between items-center self-stretch px-14 py-9 w-2/6 text-3xl text-center bg-[#FFD274] text-zinc-900">
             <div class="w-full">
@@ -165,5 +150,12 @@
         </div>
     </main>
 </body>
-
+<script>
+    fetch('../componentes/header.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('header-container').innerHTML = html;
+        })
+        .catch(error => console.error('Erro ao carregar header:', error));
+</script>
 </html>
