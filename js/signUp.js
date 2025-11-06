@@ -74,7 +74,7 @@ document.getElementById('criarConta1').addEventListener('click', () => {
                 setTimeout(function () {
                     errorEmail.classList.add('hidden');
                 }, 3000);
-                alert("Já existe um usuário cadastrado com esse e-mail")
+                mostrarToast("Já existe um usuário cadastrado com esse e-mail", 'error')
             }
         });
         if (validate1) {
@@ -144,7 +144,7 @@ document.getElementById('criarConta1').addEventListener('click', () => {
                     if (result) {
                         window.location.href = './login.html'
                     } else {
-                        alert("Ocorreu um erro ao criar a sua conta")
+                        mostrarToast("Ocorreu um erro ao criar a sua conta", 'error')
                     }
                 }
             })

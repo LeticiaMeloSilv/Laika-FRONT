@@ -96,7 +96,7 @@ async function executarSite() {
         if (nome == '' || porte == '' || peso == '' || dataNascimento == '' || raca == '' || img == '' ||
             nome == null || porte == null || peso == '' || dataNascimento == null || raca == null || img == null ||
             nome == undefined || porte == undefined || peso == undefined || dataNascimento == undefined || raca == undefined || img == undefined) {
-            alert('Preencha todos os campos')
+            mostrarToast('Preencha todos os campos', 'error')
         }
         else {
             const animal = {
@@ -114,7 +114,7 @@ async function executarSite() {
                 if (retornoInsert) {
                     window.location.reload()
                 } else {
-                    alert('Não foi possivel cadastrar novo pet, verifique as informações')
+                    mostrarToast('Não foi possivel cadastrar novo pet, verifique as informações', 'error')
                 }
             }
             catch (error) {
@@ -260,7 +260,7 @@ async function executarSite() {
                 if (status) {
                     window.location.reload()
                 } else {
-                    alert('Não foi possivel cadastrar novo pet, verifique as informações')
+                    mostrarToast('Não foi possivel cadastrar novo pet, verifique as informações', 'error')
                 }
             }
 
@@ -274,7 +274,7 @@ async function executarSite() {
                 if (result) {
                     window.location.reload()
                 } else {
-                    alert('Ocorreu um erro')
+                    mostrarToast('Ocorreu um erro', 'error')
                 }
             }
         })

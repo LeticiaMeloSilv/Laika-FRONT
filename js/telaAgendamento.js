@@ -138,7 +138,8 @@ function executarSite() {
         });
 
     } else {
-        alert("Você não tem animais cadastrados, logo, não dá realizar um agendamento")
+        mostrarToast("Você não tem animais cadastrados, logo, não é possivel realizar um agendamento", 'error')
+
         window.location.href = './home.html'
     }
 
@@ -149,7 +150,7 @@ function executarSite() {
         const today = new Date();
         const dd = String(today.getDate()).padStart(2, '0');
         if (dataAgendamento.value.substring(8, 10) < dd + 1) {
-            alert('Não é possivel fazer agendamento para um dia que já passou ou para o mesmo dia em que o agendamento foi feito, verifique a data escolhida')
+            mostrarToast('Não é possivel fazer agendamento para um dia que já passou ou para o mesmo dia em que o agendamento foi feito, verifique a data escolhida', 'error')
         }
         else {
             dataAgendamento.removeEventListener('focusout', verificarDiaAgendamento)
@@ -193,7 +194,7 @@ function executarSite() {
 
         }
         if (dataAgendamento == null || dataAgendamento == undefined || dataAgendamento == '' || selectedValue == null || selectedValue == undefined || selectedValue == '' || arrayCheckboxServicos == undefined || arrayCheckboxServicos == null || arrayCheckboxServicos == '' || arrayDivFuncionarios == null || arrayDivFuncionarios == undefined || arrayDivFuncionarios == '') {
-            alert('todos os campos devem ser preenchidos, verifique-os')
+            mostrarToast('todos os campos devem ser preenchidos, verifique-os', 'error')
         } else {
 
             const novoAgendamentoJSON = {
@@ -206,7 +207,7 @@ function executarSite() {
             if (result) {
                 window.location.href = './agendamento.html'
             } else {
-                alert('Não foi possivel realizar agendamento, verifique as informações')
+                mostrarToast('Não foi possivel realizar agendamento, verifique as informações', 'error')
             }
         }
     })

@@ -119,7 +119,7 @@ async function executarSite() {
         perfilAntigo.endereco.bairro == novosDados.endereco.bairro &&
         perfilAntigo.endereco.rua == novosDados.endereco.rua &&
         perfilAntigo.endereco.numero == novosDados.endereco.numero) {
-        alert("Erro: Nenhum dado foi alterado")
+        mostrarToast("Erro: Nenhum dado foi alterado", 'error')
       } else {
         alternarBlockInput(true)
         let status = await putCliente(novosDados, idUsuario)
@@ -127,7 +127,7 @@ async function executarSite() {
           window.location.reload()
         }
         else {
-          alert('Ocorreu um erro')
+          mostrarToast('Ocorreu um erro', 'error')
         }
       }
     }

@@ -62,7 +62,7 @@ function executarSite() {
         btn.addEventListener('click', async () => {
             const quantidadeAtualizada = quantidadeEstoque - quantidadeCompra.value
             if (quantidadeAtualizada < 0) {
-                alert(`Não é possivel realizar a compra de ${quantidadeCompra.value} produtos por falta de estoque`)
+                mostrarToast(`Não é possivel realizar a compra de ${quantidadeCompra.value} produtos por falta de estoque`, 'error')
             } else {
                 const dados = {
                     nome: info.nome,
@@ -75,10 +75,10 @@ function executarSite() {
                 console.log(dados);
                 const retornoPut = await putProduto(dados, idProduto)
                 if (retornoPut) {
-                    alert('Compra executada com sucesso')
+                    mostrarToast('Compra executada com sucesso', 'success')
                     window.location.reload();
                 } else {
-                    alert('Não foi possivel executar a compra')
+                    mostrarToast('Não foi possivel executar a compra', 'error')
                     window.location.reload();
                 }
             }
