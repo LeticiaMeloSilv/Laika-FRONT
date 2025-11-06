@@ -95,13 +95,13 @@ async function executarSite() {
                             if (status) {
                                 window.location.reload();
                             } else {
-                                alert('Não foi possivel executar Operação');
+                                mostrarToast('Não foi possivel executar Operação', 'error')
                             }
                         }
                     })
                     const btn_editar = document.getElementById('btn_editar')
                     btn_editar.addEventListener('click', () => {
-                        alert('Contate um atendente para alterar agendamento')
+                        mostrarToast('Contate um atendente para alterar agendamento', 'info')
                     })
                 });
 
