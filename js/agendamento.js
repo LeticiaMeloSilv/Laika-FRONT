@@ -18,9 +18,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         telaCarregamento.classList.add('hidden')
         executarSite()
     } else {
-        mostrarToast('Você não possui agendamentos :(', 'error')    
-        window.history.back()
-        telaCarregamento.classList.add('hidden')
+        mostrarToast('Você não possui agendamentos :(', 'error')
+        setTimeout(function () {
+            window.history.back();
+        }, 2000);
     }
 });
 async function executarSite() {
@@ -45,7 +46,7 @@ async function executarSite() {
         dayElement.className = 'calendar-day rounded-lg bg-gray-200';
         if (day == dd) {
             dayElement.className = 'calendar-day rounded-lg bg-gray-500';
-            dayElement.style.color='white';
+            dayElement.style.color = 'white';
 
         }
         dayElement.innerHTML = day;
